@@ -66,7 +66,7 @@
   <ItemGroup>
     <Compile Include="BedsideDecoration.cs" />
     <Compile Include="ColonistsDecoMain.cs" />
-    <Compile Include="ColonistsDecoModSettingsUtil.cs" />
+    <Compile Include="Settings\ColonistsDecoModSettingsUtil.cs" />
     <Compile Include="ColonistsDecoStartup.cs" />
     <Compile Include="CompAttachableThing.cs" />
     <Compile Include="CompDecoration.cs" />
@@ -75,16 +75,20 @@
     <Compile Include="CompProperties_PawnDeco.cs" />
     <Compile Include="Dialog_Confirm.cs" />
     <Compile Include="Dialog_Poster.cs" />
+    <Compile Include="Dreamcatcher.cs" />
     <Compile Include="JobDriver_DecoratingBedsideTable.cs" />
+    <Compile Include="JobDriver_HangingCeilingDecoration.cs" />
     <Compile Include="JobDriver_HangingWallDecoration.cs" />
     <Compile Include="JoyGiver_DecoratingBedsideTable.cs" />
+    <Compile Include="JoyGiver_HangingCeilingDecoration.cs" />
     <Compile Include="JoyGiver_HangingWallDecoration.cs" />
-    <Compile Include="ColonistsDecoModSettings.cs" />
+    <Compile Include="Settings\ColonistsDecoModSettings.cs" />
     <Compile Include="CompPawnDeco.cs" />
     <Compile Include="Poster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

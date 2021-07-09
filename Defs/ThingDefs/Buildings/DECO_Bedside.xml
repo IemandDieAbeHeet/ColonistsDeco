@@ -8,8 +8,8 @@
   <category>Building</category>
 	<thingClass>ColonistsDeco.BedSideDecoration</thingClass>
 	<graphicData>
-    <texPath>Bedside/BedsideBottle</texPath>
-    <graphicClass>Graphic_Random</graphicClass>
+    <texPath>Bedroom/Bedside/Book/Book</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
     <drawSize>(1,1)</drawSize>
   </graphicData>
   <altitudeLayer>BuildingOnTop</altitudeLayer>
@@ -42,8 +42,8 @@
   <description>A decorative book. Placed on a bedside table by one of your colonists.</description>
   <category>Building</category>
 	<graphicData>
-    <texPath>Bedside/BedsideBook/BedsideBook</texPath>
-    <graphicClass>Graphic_Multi</graphicClass>
+    <texPath>Bedroom/Bedside/Bottle</texPath>
+    <graphicClass>Graphic_Random</graphicClass>
     <drawSize>(1,1)</drawSize>
   </graphicData>
   <altitudeLayer>BuildingOnTop</altitudeLayer>

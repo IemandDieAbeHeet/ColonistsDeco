@@ -6,7 +6,7 @@
   <label>decorative dreamcatcher</label>
   <description>A dreamcatcher. Hung up by one of your colonists.</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.CelingDecoration</thingClass>
+	<thingClass>ColonistsDeco.Dreamcatcher</thingClass>
 	<graphicData>
     <texPath>Bedroom/Ceiling/Dreamcatcher</texPath>
     <graphicClass>Graphic_Random</graphicClass>
