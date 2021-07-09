@@ -1,0 +1,8 @@
+E:\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Source\ColonistsDeco\ColonistsDeco\obj\Debug\ColonistsDeco.csproj.CoreCompileInputs.cache
+E:\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Assemblies\ColonistsDeco.dll
+E:\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Source\ColonistsDeco\ColonistsDeco\obj\Debug\ColonistsDeco.dll
+E:\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Source\ColonistsDeco\ColonistsDeco\obj\Debug\ColonistsDeco.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Assemblies\ColonistsDeco.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Source\ColonistsDeco\ColonistsDeco\obj\Debug\ColonistsDeco.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Source\ColonistsDeco\ColonistsDeco\obj\Debug\ColonistsDeco.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\ColonistsDeco\Source\ColonistsDeco\ColonistsDeco\obj\Debug\ColonistsDeco.dll

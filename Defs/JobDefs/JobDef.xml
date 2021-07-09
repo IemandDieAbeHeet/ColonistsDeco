@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>Deco_HangingDecoration</defName>
+    <driverClass>ColonistsDeco.JobDriver_HangingDecoration</driverClass>
+    <reportString>Hanging up a poster.</reportString>
+    <joyDuration>4000</joyDuration>
+    <joySkill>Construction</joySkill>
+    <joyXpPerTick>0.003</joyXpPerTick>
+		<joyMaxParticipants>1</joyMaxParticipants>
+		<joyGainRate>1</joyGainRate>
+    <joyKind>Deco_Decorating</joyKind>
+  </JobDef>
+
+  <JobDef>
+    <defName>Deco_DecoratingBedsideTable</defName>
+    <driverClass>ColonistsDeco.JobDriver_DecoratingBedsideTable</driverClass>
+    <reportString>Placing something on their bedside table.</reportString>
+    <joyDuration>4000</joyDuration>
+    <joySkill>Construction</joySkill>
+    <joyXpPerTick>0.003</joyXpPerTick>
+		<joyMaxParticipants>1</joyMaxParticipants>
+		<joyGainRate>1</joyGainRate>
+    <joyKind>Deco_Decorating</joyKind>
+  </JobDef>
+</Defs>

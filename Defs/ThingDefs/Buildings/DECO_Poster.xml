@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterStar</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterStar/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>The Original</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterEarth</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterEarth/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>Our Home</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterAlien</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterAlien/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>Outer Space</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterCat</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists. (Poster idea suggested by: pumacatrun2)</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterCat/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>Hang In There!</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterDogs</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists. (Poster idea suggested by: DatGuyWeis)</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterDogs/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>The Poker Dogs</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterMeteor</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists. (Poster created by: Barbarossa)</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterMeteor/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>The End</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterTorn</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <category>Building</category>
+<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterTorn/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>-50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>Wreckage</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+
+    <ThingDef ParentName="BuildingBase">
+  <defName>DECOPosterBrain</defName>
+  <label>decorative poster</label>
+  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <category>Building</category>
+<thingClass>ColonistsDeco.Poster</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Wall/Posters/PosterBrain/Poster</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+      <decorationName>The Experiment</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <forceShowRoomStats>true</forceShowRoomStats>
+    <isEdifice>false</isEdifice>
+    <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Rare</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  </ThingDef>
+  
+  </Defs>

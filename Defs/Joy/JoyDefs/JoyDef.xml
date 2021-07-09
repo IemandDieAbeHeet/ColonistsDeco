@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<JoyGiverDef>
+		<defName>Deco_HangingDecoration</defName>
+		<giverClass>ColonistsDeco.JoyGiver_HangingDecoration</giverClass>
+		<baseChance>2</baseChance>
+        <joyKind>Deco_Decorating</joyKind>
+		<jobDef>Deco_HangingDecoration</jobDef>
+        <requiredCapacities>
+			<li>Sight</li>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+
+	<JoyGiverDef>
+		<defName>Deco_DecoratingBedsideTable</defName>
+		<giverClass>ColonistsDeco.JoyGiver_DecoratingBedsideTable</giverClass>
+		<baseChance>2</baseChance>
+        <joyKind>Deco_Decorating</joyKind>
+		<jobDef>Deco_DecoratingBedsideTable</jobDef>
+        <requiredCapacities>
+			<li>Sight</li>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+</Defs>
