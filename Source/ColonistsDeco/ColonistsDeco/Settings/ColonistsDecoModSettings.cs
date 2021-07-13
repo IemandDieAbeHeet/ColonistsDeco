@@ -7,6 +7,8 @@ namespace ColonistsDeco
 	{
 		public int posterLimit = 2;
 
+		public int ceilingDecorationLimit = 2;
+
 		public int defaultDecoCooldown = 60000;
 
 		public override void ExposeData()
@@ -20,7 +22,9 @@ namespace ColonistsDeco
 			Listing_Standard listing_Standard = new Listing_Standard();
 			listing_Standard.ColumnWidth = canvas.width;
 			listing_Standard.Begin(canvas);
-			listing_Standard.Slider(ref posterLimit, 1, 25, () => "Poster Limit: " + posterLimit, 1f);
+			listing_Standard.Slider(ref posterLimit, 1, 25, () => "Poster limit: " + posterLimit, 1f);
+			listing_Standard.Gap(32f);
+			listing_Standard.Slider(ref ceilingDecorationLimit, 1, 25, () => "Ceiling decoration limit: " + ceilingDecorationLimit, 1f);
 			listing_Standard.Gap(32f);
 			listing_Standard.Slider(ref defaultDecoCooldown, 0, 240000, () => "Decoration cooldown (in ticks): " + defaultDecoCooldown, 100f);
 			listing_Standard.Gap(32f);

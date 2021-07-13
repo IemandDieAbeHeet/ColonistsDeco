@@ -12,31 +12,28 @@ namespace ColonistsDeco
 
         protected const int BaseWorkAmount = 100;
         protected LocalTargetInfo placeInfo => job.GetTarget(TargetIndex.A);
-        protected LocalTargetInfo wallInfo => job.GetTarget(TargetIndex.B);
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return pawn.Reserve(wallInfo, job, 1, 0, null, errorOnFailed) && pawn.Reserve(placeInfo, job, 1, -1, null, errorOnFailed);
+            return pawn.Reserve(placeInfo, job, 1, -1, null, errorOnFailed);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnBurningImmobile(TargetIndex.B);
-            this.FailOnDestroyedOrNull(TargetIndex.B);
+            this.FailOnBurningImmobile(TargetIndex.A);
+            this.FailOnDestroyedOrNull(TargetIndex.A);
 
             yield return Toils_Reserve.Reserve(TargetIndex.A);
-            yield return Toils_Reserve.Reserve(TargetIndex.B);
 
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
 
-            Toil hangPoster = new Toil();
-            hangPoster.handlingFacing = true;
-            hangPoster.initAction = delegate
+            Toil hangCeilingDeco = new Toil();
+            hangCeilingDeco.handlingFacing = true;
+            hangCeilingDeco.initAction = delegate
             {
                 workLeft = 100f;
             };
-            hangPoster.tickAction = delegate
+            hangCeilingDeco.tickAction = delegate
             {
-                pawn.rotationTracker.FaceCell(TargetB.Cell);
                 if (pawn.skills != null)
                 {
                     pawn.skills.Learn(SkillDefOf.Construction, 0.085f);
@@ -46,30 +43,20 @@ namespace ColonistsDeco
                 if (workLeft <= 0f)
                 {
                     Thing thing = new Thing();
-                    TraitDef asceticTrait = DefDatabase<TraitDef>.GetNamed("Ascetic");
                     foreach (Trait pawnTrait in pawn.story.traits.allTraits)
                     {
-                        if (pawnTrait.def.defName == "Ascetic")
-                        {
-                            thing = ThingMaker.MakeThing(Utility.tornDef);
-                            break;
-                        }
-                        else
-                        {
-                            thing = ThingMaker.MakeThing(Utility.posterDefs.RandomElement());
-                        }
+                        thing = ThingMaker.MakeThing(Utility.ceilingDefs.RandomElement());
                     }
+                    
                     thing.SetFactionDirect(pawn.Faction);
-                    thing.TryGetComp<CompDecoration>().decorationCreator = pawn.Name.ToStringShort;
-                    wallInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
-                    GenSpawn.Spawn(thing, wallInfo.Cell, Map, pawn.Rotation.Opposite, WipeMode.Vanish, false);
+                    GenSpawn.Spawn(thing, placeInfo.Cell, Map, pawn.Rotation.Opposite, WipeMode.Vanish, false);
                     ReadyForNextToil();
                 }
             };
-            hangPoster.defaultCompleteMode = ToilCompleteMode.Never;
-            hangPoster.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
+            hangCeilingDeco.defaultCompleteMode = ToilCompleteMode.Never;
+            hangCeilingDeco.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
 
-            yield return hangPoster;
+            yield return hangCeilingDeco;
         }
 
         public override void ExposeData()

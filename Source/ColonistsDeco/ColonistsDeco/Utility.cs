@@ -9,11 +9,15 @@ namespace ColonistsDeco
 
 		public static ThingDef tornDef;
 
+		public static List<ThingDef> ceilingDefs = new List<ThingDef>();
+
 		public static List<ThingDef> posterDefs = new List<ThingDef>();
 
 		public static List<ThingDef> bedsideDefs = new List<ThingDef>();
 
 		public static int wallHash;
+
+		public static List<int> ceilingHashes = new List<int>();
 
 		public static List<int> posterHashes = new List<int>();
 
@@ -41,6 +45,11 @@ namespace ColonistsDeco
                 {
 					bedsideDefs.Add(allDef);
 					bedsideHashes.Add(allDef.GetHashCode());
+                } else if(allDef.defName.Contains("DECODreamcatcher"))
+                {
+					ceilingDefs.Add(allDef);
+					Log.Message(allDef.defName);
+					ceilingHashes.Add(allDef.GetHashCode());
                 }
 
 				switch(allDef.defName)
@@ -60,6 +69,15 @@ namespace ColonistsDeco
 						break;
 				}
 			}
+		}
+
+		public static bool IsCeilingDeco(Thing thing)
+        {
+			if (ceilingHashes.Contains(thing.def.GetHashCode()))
+            {
+				return true;
+            }
+			return false;
 		}
 
 		public static bool IsPoster(Thing thing)

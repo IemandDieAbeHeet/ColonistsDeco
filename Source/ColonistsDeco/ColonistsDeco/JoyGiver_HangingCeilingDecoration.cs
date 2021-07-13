@@ -11,7 +11,7 @@ namespace ColonistsDeco
     {
         public override Job TryGiveJob(Pawn pawn)
         {
-            Thing wall = new Thing();
+            IntVec3 ceilingLocation;
             Map pawnMap = pawn.Map;
 
             if (pawn.WorkTypeIsDisabled(WorkTypeDefOf.Construction) || pawn.IsPrisoner || pawn.ownership.OwnedBed == null || !pawn.TryGetComp<CompPawnDeco>().CanDecorate)
@@ -21,65 +21,45 @@ namespace ColonistsDeco
 
             pawn.TryGetComp<CompPawnDeco>().ResetDecoCooldown();
 
-            IList<IntVec3> wallLocations = pawn.ownership.OwnedBed.GetRoom().BorderCells.ToList();
+            IEnumerable<IntVec3> tempCeilingLocations = pawn.ownership.OwnedBed.GetRoom().Cells;
+            IList<IntVec3> ceilingLocations = new List<IntVec3>();
 
-            IList<Thing> wallThingList = new List<Thing>();
-
-            foreach (IntVec3 wallLocation in wallLocations)
+            foreach (IntVec3 tempCeilingLocation in tempCeilingLocations)
             {
-                if (wallLocation.IsValid && wallLocation.InBounds(pawnMap))
+                if (tempCeilingLocation.IsValid && tempCeilingLocation.InBounds(pawnMap) && !tempCeilingLocation.Filled(pawnMap) && tempCeilingLocation.Roofed(pawnMap))
                 {
-                    IList<Thing> wallTempThingList = wallLocation.GetThingList(pawnMap);
-                    if (wallTempThingList.Any(w => Utility.IsPoster(w)))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        foreach (Thing wallThing in wallTempThingList)
-                        {
-                            if (Utility.IsWall(wallThing))
-                            {
-                                wallThingList.Add(wallThing);
-                            }
-                        }
-                    }
+                    ceilingLocations.Add(tempCeilingLocation);
                 }
             }
 
-            IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
-
-            int posterAmount = 0;
-
-            foreach (Thing thingInRoom in thingsInRoom)
+            if (ceilingLocations.Count > 0)
             {
-                if (Utility.IsPoster(thingInRoom))
-                {
-                    posterAmount++;
-                }
-            }
-
-            wall = wallThingList.RandomElement();
-            IntVec3 randomPlacePos = IntVec3.Invalid;
-            int i = 0;
-            while (i < 4)
-            {
-                IntVec3 intVec = wall.Position + GenAdj.CardinalDirections[i];
-                Region region = (wall.Position + GenAdj.CardinalDirections[i]).GetRegion(pawnMap);
-                if (region != null && region.Room == pawn.ownership.OwnedBed.GetRoom())
-                {
-                    randomPlacePos = intVec;
-                }
-                int num = i + 1;
-                i = num;
-            }
-
-            if (!randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || posterAmount >= ColonistsDecoMain.Settings.posterLimit)
+                ceilingLocation = ceilingLocations.RandomElement();
+            } else
             {
                 return null;
             }
 
-            Job job = JobMaker.MakeJob(def.jobDef, randomPlacePos, wall);
+            IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
+
+            int ceilingDecorationAmount = 0;
+
+            foreach (Thing thingInRoom in thingsInRoom)
+            {
+                if (Utility.IsCeilingDeco(thingInRoom))
+                {
+                    ceilingDecorationAmount++;
+                }
+            }
+
+            Log.Message(ceilingLocation.x + ", " + ceilingLocation.z);
+
+            if (ceilingLocation == null || ceilingDecorationAmount >= ColonistsDecoMain.Settings.ceilingDecorationLimit)
+            {
+                return null;
+            }
+
+            Job job = JobMaker.MakeJob(def.jobDef, ceilingLocation);
             return job;
         }
     }
