@@ -52,7 +52,7 @@ namespace ColonistsDeco
                 }
             }
 
-            if (ceilingLocation == null || ceilingDecorationAmount >= ColonistsDecoMain.Settings.ceilingDecorationLimit)
+            if (pawn.CanReserveAndReach(ceilingLocation, PathEndMode.OnCell, Danger.None, 1, -1) && ceilingLocation == null || ceilingDecorationAmount >= ColonistsDecoMain.Settings.ceilingDecorationLimit)
             {
                 return null;
             }

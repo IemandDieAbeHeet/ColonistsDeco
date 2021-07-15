@@ -75,7 +75,7 @@ namespace ColonistsDeco
                 i = num;
             }
 
-            if (!randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || wallDecoAmount >= ColonistsDecoMain.Settings.posterLimit)
+            if (pawn.CanReserveAndReach(randomPlacePos, PathEndMode.OnCell, Danger.None, 1, -1) && !randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || wallDecoAmount >= ColonistsDecoMain.Settings.posterLimit)
             {
                 return null;
             }
