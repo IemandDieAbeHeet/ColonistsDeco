@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="BedsideDecoration.cs" />
     <Compile Include="ColonistsDecoMain.cs" />
+    <Compile Include="DecoModExtension.cs" />
     <Compile Include="Settings\ColonistsDecoModSettingsUtil.cs" />
     <Compile Include="ColonistsDecoStartup.cs" />
     <Compile Include="CompAttachableThing.cs" />

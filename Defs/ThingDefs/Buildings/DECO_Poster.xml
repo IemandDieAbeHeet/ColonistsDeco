@@ -37,6 +37,12 @@
 	<destroyable>true</destroyable>
 	<useHitPoints>true</useHitPoints>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
 <ThingDef ParentName="BuildingBase">
@@ -78,6 +84,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
@@ -119,6 +131,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
@@ -160,6 +178,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
 <ThingDef ParentName="BuildingBase">
@@ -202,6 +226,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
@@ -243,6 +273,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
@@ -284,6 +320,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
 
     <ThingDef ParentName="BuildingBase">
@@ -325,6 +367,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Industrial</decoTechProgression>
+      <decoLocationType>Wall</decoLocationType>
+    </li>
+  </modExtensions>
   </ThingDef>
   
   </Defs>

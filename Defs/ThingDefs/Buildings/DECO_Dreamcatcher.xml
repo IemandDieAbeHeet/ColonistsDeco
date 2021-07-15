@@ -34,6 +34,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Neolithic</decoTechProgression>
+      <decoLocationType>Ceiling</decoLocationType>
+    </li>
+  </modExtensions>
 </ThingDef>
 
   </Defs>

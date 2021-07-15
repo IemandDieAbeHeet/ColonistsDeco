@@ -9,9 +9,11 @@ namespace ColonistsDeco
 
 		public static ThingDef tornDef;
 
+		public static Dictionary<ThingDef, DecoTechProgression> thingTechProgression = new Dictionary<ThingDef, DecoTechProgression>();
+
 		public static List<ThingDef> ceilingDefs = new List<ThingDef>();
 
-		public static List<ThingDef> posterDefs = new List<ThingDef>();
+		public static List<ThingDef> wallDefs = new List<ThingDef>();
 
 		public static List<ThingDef> bedsideDefs = new List<ThingDef>();
 
@@ -19,7 +21,7 @@ namespace ColonistsDeco
 
 		public static List<int> ceilingHashes = new List<int>();
 
-		public static List<int> posterHashes = new List<int>();
+		public static List<int> wallHashes = new List<int>();
 
 		public static List<int> bedsideHashes = new List<int>();
 
@@ -30,27 +32,31 @@ namespace ColonistsDeco
 
 			foreach (ThingDef allDef in DefDatabase<ThingDef>.AllDefs)
 			{
-				if (allDef.defName.Contains("DECOPoster"))
+				if (allDef.HasModExtension<DecoModExtension>())
 				{
-					if(allDef.defName == "DECOPosterTorn")
+					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechProgression);
+
+					switch(allDef.GetModExtension<DecoModExtension>().decoLocationType)
                     {
-						tornDef = allDef;
-                    } else
-                    {
-						posterDefs.Add(allDef);
-						posterHashes.Add(allDef.GetHashCode());
-					}
+						case DecoLocationType.Wall:
+							wallDefs.Add(allDef);
+							wallHashes.Add(allDef.GetHashCode());
+
+							if(allDef.defName == "DECOPosterTorn")
+                            {
+								tornDef = allDef;
+                            }
+							break;
+						case DecoLocationType.Bedside:
+							bedsideDefs.Add(allDef);
+							bedsideHashes.Add(allDef.GetHashCode());
+							break;
+						case DecoLocationType.Ceiling:
+							ceilingDefs.Add(allDef);
+							ceilingHashes.Add(allDef.GetHashCode());
+							break;
+                    }
 				}
-				else if (allDef.defName.Contains("DECOBedside"))
-                {
-					bedsideDefs.Add(allDef);
-					bedsideHashes.Add(allDef.GetHashCode());
-                } else if(allDef.defName.Contains("DECODreamcatcher"))
-                {
-					ceilingDefs.Add(allDef);
-					Log.Message(allDef.defName);
-					ceilingHashes.Add(allDef.GetHashCode());
-                }
 
 				switch(allDef.defName)
                 {
@@ -80,9 +86,9 @@ namespace ColonistsDeco
 			return false;
 		}
 
-		public static bool IsPoster(Thing thing)
+		public static bool IsWallDeco(Thing thing)
 		{
-			if (posterHashes.Contains(thing.def.GetHashCode()))
+			if (wallHashes.Contains(thing.def.GetHashCode()))
 			{
 				return true;
 			}

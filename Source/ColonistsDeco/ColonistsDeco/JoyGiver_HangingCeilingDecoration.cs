@@ -52,8 +52,6 @@ namespace ColonistsDeco
                 }
             }
 
-            Log.Message(ceilingLocation.x + ", " + ceilingLocation.z);
-
             if (ceilingLocation == null || ceilingDecorationAmount >= ColonistsDecoMain.Settings.ceilingDecorationLimit)
             {
                 return null;

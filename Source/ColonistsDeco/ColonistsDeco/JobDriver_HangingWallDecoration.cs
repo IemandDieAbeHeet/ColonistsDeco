@@ -57,11 +57,15 @@ namespace ColonistsDeco
                         }
                         else
                         {
-                            thing = ThingMaker.MakeThing(Utility.posterDefs.RandomElement());
+                            thing = ThingMaker.MakeThing(Utility.wallDefs.RandomElement());
                         }
                     }
                     thing.SetFactionDirect(pawn.Faction);
-                    thing.TryGetComp<CompDecoration>().decorationCreator = pawn.Name.ToStringShort;
+                    CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
+                    if(compDecoration != null)
+                    {
+                        compDecoration.decorationCreator = pawn.Name.ToStringShort;
+                    }
                     wallInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
                     GenSpawn.Spawn(thing, wallInfo.Cell, Map, pawn.Rotation.Opposite, WipeMode.Vanish, false);
                     ReadyForNextToil();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
- <ThingDef ParentName="BuildingBase">
+<ThingDef ParentName="BuildingBase">
   <defName>DECOBedsideBottle</defName>
   <label>decorative bottle</label>
   <description>A decorative bottle. Placed on a bedside table by one of your colonists.</description>
@@ -34,9 +34,15 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
-  </ThingDef>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Medieval</decoTechProgression>
+      <decoLocationType>Bedside</decoLocationType>
+    </li>
+  </modExtensions>
+</ThingDef>
 
-   <ThingDef ParentName="BuildingBase">
+<ThingDef ParentName="BuildingBase">
   <defName>DECOBedsideBook</defName>
   <label>decorative book</label>
   <description>A decorative book. Placed on a bedside table by one of your colonists.</description>
@@ -68,6 +74,12 @@
 	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
 	<clearBuildingArea>false</clearBuildingArea>
 	<defaultPlacingRot>South</defaultPlacingRot>
-  </ThingDef>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechProgression>Medieval</decoTechProgression>
+      <decoLocationType>Bedside</decoLocationType>
+    </li>
+  </modExtensions>
+</ThingDef>
 
   </Defs>

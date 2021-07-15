@@ -31,7 +31,7 @@ namespace ColonistsDeco
                 if (wallLocation.IsValid && wallLocation.InBounds(pawnMap))
                 {
                     IList<Thing> wallTempThingList = wallLocation.GetThingList(pawnMap);
-                    if (wallTempThingList.Any(w => Utility.IsPoster(w)))
+                    if (wallTempThingList.Any(w => Utility.IsWallDeco(w)))
                     {
                         continue;
                     }
@@ -50,13 +50,13 @@ namespace ColonistsDeco
 
             IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
 
-            int posterAmount = 0;
+            int wallDecoAmount = 0;
 
             foreach (Thing thingInRoom in thingsInRoom)
             {
-                if(Utility.IsPoster(thingInRoom))
+                if(Utility.IsWallDeco(thingInRoom))
                 {
-                    posterAmount++;
+                    wallDecoAmount++;
                 }
             }
 
@@ -75,7 +75,7 @@ namespace ColonistsDeco
                 i = num;
             }
 
-            if (!randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || posterAmount >= ColonistsDecoMain.Settings.posterLimit)
+            if (!randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || wallDecoAmount >= ColonistsDecoMain.Settings.posterLimit)
             {
                 return null;
             }

@@ -15,7 +15,9 @@ namespace ColonistsDeco
 		{
 			base.ExposeData();
 			Scribe_Values.Look(ref posterLimit, "posterLimit", 3);
-		}
+			Scribe_Values.Look(ref ceilingDecorationLimit, "ceilingDecorationLimit", 2);
+			Scribe_Values.Look(ref defaultDecoCooldown, "defaultDecoCooldown", 60000);
+	}
 
 		public void DoWindowContents(Rect canvas)
 		{ 

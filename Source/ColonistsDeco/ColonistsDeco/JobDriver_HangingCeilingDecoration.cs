@@ -19,14 +19,12 @@ namespace ColonistsDeco
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnBurningImmobile(TargetIndex.A);
-            this.FailOnDestroyedOrNull(TargetIndex.A);
-
             yield return Toils_Reserve.Reserve(TargetIndex.A);
 
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
 
             Toil hangCeilingDeco = new Toil();
+
             hangCeilingDeco.handlingFacing = true;
             hangCeilingDeco.initAction = delegate
             {
@@ -43,13 +41,9 @@ namespace ColonistsDeco
                 if (workLeft <= 0f)
                 {
                     Thing thing = new Thing();
-                    foreach (Trait pawnTrait in pawn.story.traits.allTraits)
-                    {
-                        thing = ThingMaker.MakeThing(Utility.ceilingDefs.RandomElement());
-                    }
-                    
+                    thing = ThingMaker.MakeThing(Utility.ceilingDefs.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
-                    GenSpawn.Spawn(thing, placeInfo.Cell, Map, pawn.Rotation.Opposite, WipeMode.Vanish, false);
+                    GenSpawn.Spawn(thing, placeInfo.Cell, Map, Rot4.North, WipeMode.Vanish, false);
                     ReadyForNextToil();
                 }
             };
