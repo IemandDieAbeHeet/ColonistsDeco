@@ -2,13 +2,13 @@
 <Defs>
 
 <ThingDef ParentName="BuildingBase">
-    <defName>DECODeerhead</defName>
-    <label>decorative deerhead</label>
-    <description>A decorative deerhead. Hung up by one of your colonists.</description>
+    <defName>DECOBoarhead</defName>
+    <label>decorative boarhead</label>
+    <description>A decorative boarhead. Hung up by one of your colonists.</description>
     <category>Building</category>
     <thingClass>ColonistsDeco.WallDeco_Default</thingClass>
     <graphicData>
-        <texPath>Bedroom/Wall/Ornaments/Deerhead/Deerhead</texPath>
+        <texPath>Bedroom/Wall/Ornaments/Boarhead/Boarhead</texPath>
         <graphicClass>Graphic_Multi</graphicClass>
         <drawSize>(1,1)</drawSize>
     </graphicData>

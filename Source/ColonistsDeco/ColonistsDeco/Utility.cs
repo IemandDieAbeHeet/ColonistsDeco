@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Verse;
+using RimWorld;
 
 namespace ColonistsDeco
 {
@@ -9,7 +10,9 @@ namespace ColonistsDeco
 
 		public static ThingDef tornDef;
 
-		public static Dictionary<ThingDef, DecoTechProgression> thingTechProgression = new Dictionary<ThingDef, DecoTechProgression>();
+		public static Dictionary<ThingDef, TechLevel> thingTechProgression = new Dictionary<ThingDef, TechLevel>();
+
+		public static Dictionary<ThingDef, (TechLevel, DecoLocationType)> decoDictionary = new Dictionary<ThingDef, (TechLevel, DecoLocationType)>();
 
 		public static List<ThingDef> ceilingDefs = new List<ThingDef>();
 
@@ -34,9 +37,10 @@ namespace ColonistsDeco
 			{
 				if (allDef.HasModExtension<DecoModExtension>())
 				{
-					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechProgression);
+					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechLevel);
+					decoDictionary.Add(allDef, (allDef.GetModExtension<DecoModExtension>().decoTechLevel, allDef.GetModExtension<DecoModExtension>().decoLocationType));
 
-					switch(allDef.GetModExtension<DecoModExtension>().decoLocationType)
+					switch (allDef.GetModExtension<DecoModExtension>().decoLocationType)
                     {
 						case DecoLocationType.Wall:
 							wallDefs.Add(allDef);
@@ -112,5 +116,60 @@ namespace ColonistsDeco
 			}
 			return false;
 		}
+
+		public static List<ThingDef> GetDecoList(DecoLocationType decoLocationType, TechLevel techLevel)
+        {
+			List<ThingDef> decoList = new List<ThingDef>();
+			List<ThingDef> locationDecoList = new List<ThingDef>();
+
+			foreach (ThingDef deco in decoDictionary.Keys)
+            {
+				(TechLevel, DecoLocationType) decoTuple;
+				if(decoDictionary.TryGetValue(deco, out decoTuple))
+                {
+					if(decoTuple.Item1 == techLevel && decoTuple.Item2 == decoLocationType)
+                    {
+						decoList.Add(deco);
+                    } else if(decoTuple.Item2 == decoLocationType) {
+						locationDecoList.Add(deco);
+					}
+                }
+            }
+
+			if(decoList.Count > 0)
+            {
+				return decoList;
+            } else
+            {
+				Log.Warning("No associating deco's found, returning associating location deco's");
+
+				return locationDecoList;
+			}
+		}
+
+		public static bool TechLevelHasDecos(TechLevel techLevel, DecoLocationType decoLocationType)
+        {
+			int count = 0;
+
+			foreach(ThingDef deco in decoDictionary.Keys)
+            {
+				(TechLevel, DecoLocationType) decoTuple;
+				if (decoDictionary.TryGetValue(deco, out decoTuple))
+				{
+					if (decoTuple.Item1 == techLevel && decoTuple.Item2 == decoLocationType)
+					{
+						count++;
+					}
+				}
+			}
+
+			if(count > 0)
+            {
+				return true;
+            } else
+            {
+				return false;
+            }
+        }
 	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ColonistsDeco
 {
-    class BedsideDecoration : Building
+    class BedsideDeco_Default : Building
     {
         float randomNum1 = Rand.Range(-.1f, .1f);
         float randomNum2 = Rand.Range(-.1f, .1f);

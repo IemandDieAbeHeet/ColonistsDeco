@@ -41,7 +41,8 @@ namespace ColonistsDeco
                 if (workLeft <= 0f)
                 {
                     Thing thing = new Thing();
-                    thing = ThingMaker.MakeThing(Utility.ceilingDefs.RandomElement());
+                    List<ThingDef> ceilingDecos = Utility.GetDecoList(DecoLocationType.Ceiling, pawn.Faction.def.techLevel);
+                    thing = ThingMaker.MakeThing(ceilingDecos.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
                     GenSpawn.Spawn(thing, placeInfo.Cell, Map, Rot4.North, WipeMode.Vanish, false);
                     ReadyForNextToil();

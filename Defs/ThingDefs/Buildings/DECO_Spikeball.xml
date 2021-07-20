@@ -2,13 +2,13 @@
 <Defs>
 
 <ThingDef ParentName="BuildingBase">
-  <defName>DECODreamcatcher</defName>
-  <label>decorative dreamcatcher</label>
-  <description>A dreamcatcher. Hung up by one of your colonists.</description>
+  <defName>DECOSpikeball</defName>
+  <label>decorative spikeball</label>
+  <description>A spikeball. Hung up by one of your colonists.</description>
   <category>Building</category>
 	<thingClass>ColonistsDeco.CeilingDeco_Default</thingClass>
 	<graphicData>
-    <texPath>Bedroom/Ceiling/Dreamcatcher</texPath>
+    <texPath>Bedroom/Ceiling/Spikeball</texPath>
     <graphicClass>Graphic_Random</graphicClass>
     <drawSize>(1,1)</drawSize>
   </graphicData>
@@ -36,7 +36,7 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechLevel>Neolithic</decoTechLevel>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Ceiling</decoLocationType>
     </li>
   </modExtensions>

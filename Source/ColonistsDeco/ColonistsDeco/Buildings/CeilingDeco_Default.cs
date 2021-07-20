@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ColonistsDeco
 {
-    class Dreamcatcher : Building
+    class CeilingDeco_Default : Building
     {
     }
 }

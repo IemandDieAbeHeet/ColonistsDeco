@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ColonistsDeco
 {
-    class Poster : Building
+    class WallDeco_Poster : Building
     {
 		public string InspectStringAddon = "Poster: ";
 

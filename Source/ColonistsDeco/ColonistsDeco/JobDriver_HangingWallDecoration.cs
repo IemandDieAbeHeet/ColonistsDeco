@@ -47,19 +47,8 @@ namespace ColonistsDeco
                 if (workLeft <= 0f)
                 {
                     Thing thing = new Thing();
-                    TraitDef asceticTrait = DefDatabase<TraitDef>.GetNamed("Ascetic");
-                    foreach(Trait pawnTrait in pawn.story.traits.allTraits)
-                    {
-                        if (pawnTrait.def.defName == "Ascetic")
-                        {
-                            thing = ThingMaker.MakeThing(Utility.tornDef);
-                            break;
-                        }
-                        else
-                        {
-                            thing = ThingMaker.MakeThing(Utility.wallDefs.RandomElement());
-                        }
-                    }
+                    List<ThingDef> wallDecos = Utility.GetDecoList(DecoLocationType.Wall, pawn.Faction.def.techLevel);
+                    thing = ThingMaker.MakeThing(wallDecos.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
                     CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
                     if(compDecoration != null)

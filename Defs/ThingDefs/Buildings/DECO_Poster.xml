@@ -6,7 +6,7 @@
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists.</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.Poster</thingClass>
+	<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterStar/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -39,7 +39,7 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
@@ -50,7 +50,7 @@
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists.</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.Poster</thingClass>
+	<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterEarth/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -86,7 +86,7 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
@@ -97,7 +97,7 @@
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists.</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.Poster</thingClass>
+	<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterAlien/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -133,7 +133,7 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
@@ -144,7 +144,7 @@
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists. (Poster idea suggested by: pumacatrun2)</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.Poster</thingClass>
+	<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterCat/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -180,7 +180,7 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
@@ -191,7 +191,7 @@
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists. (Poster idea suggested by: DatGuyWeis)</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.Poster</thingClass>
+	<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterDogs/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -228,7 +228,7 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
@@ -239,7 +239,7 @@
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists. (Poster created by: Barbarossa)</description>
   <category>Building</category>
-	<thingClass>ColonistsDeco.Poster</thingClass>
+	<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterMeteor/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -275,65 +275,18 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
   </ThingDef>
 
-  <ThingDef ParentName="BuildingBase">
-  <defName>DECOPosterTorn</defName>
-  <label>decorative poster</label>
-  <description>A decorative poster. Hung up by one of your colonists.</description>
-  <category>Building</category>
-<thingClass>ColonistsDeco.Poster</thingClass>
-	<graphicData>
-    <texPath>Bedroom/Wall/Posters/PosterTorn/Poster</texPath>
-    <graphicClass>Graphic_Multi</graphicClass>
-    <drawSize>(1,1)</drawSize>
-  </graphicData>
-  <altitudeLayer>BuildingOnTop</altitudeLayer>
-  <passability>Standable</passability>
-	<statBases>
-    <MaxHitPoints>10</MaxHitPoints>
-    <Beauty>-50</Beauty>
-    <WorkToBuild>100</WorkToBuild>
-    <Flammability>10</Flammability>
-    <Mass>2</Mass>
-  </statBases>
-  <comps>
-    <li Class="ColonistsDeco.CompProperties_Decoration">
-      <decorationName>Wreckage</decorationName>
-    </li>
-  </comps>
-  <size>(1,1)</size>
-  <building>
-    <forceShowRoomStats>true</forceShowRoomStats>
-    <isEdifice>false</isEdifice>
-    <canPlaceOverWall>true</canPlaceOverWall>
-  </building>
-	<tickerType>Rare</tickerType>
-  <rotatable>true</rotatable>
-	<selectable>true</selectable>
-	<destroyable>true</destroyable>
-	<useHitPoints>true</useHitPoints>
-	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
-	<clearBuildingArea>false</clearBuildingArea>
-	<defaultPlacingRot>South</defaultPlacingRot>
-  <modExtensions>
-    <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
-      <decoLocationType>Wall</decoLocationType>
-    </li>
-  </modExtensions>
-  </ThingDef>
-
-    <ThingDef ParentName="BuildingBase">
+<ThingDef ParentName="BuildingBase">
   <defName>DECOPosterBrain</defName>
   <label>decorative poster</label>
   <description>A decorative poster. Hung up by one of your colonists.</description>
   <category>Building</category>
-<thingClass>ColonistsDeco.Poster</thingClass>
+<thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
     <texPath>Bedroom/Wall/Posters/PosterBrain/Poster</texPath>
     <graphicClass>Graphic_Multi</graphicClass>
@@ -369,10 +322,10 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechProgression>Industrial</decoTechProgression>
+      <decoTechLevel>Industrial</decoTechLevel>
       <decoLocationType>Wall</decoLocationType>
     </li>
   </modExtensions>
-  </ThingDef>
+</ThingDef>
   
   </Defs>

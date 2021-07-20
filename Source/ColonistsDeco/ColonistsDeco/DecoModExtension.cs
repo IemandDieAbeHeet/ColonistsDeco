@@ -1,16 +1,8 @@
 ﻿using Verse;
+using RimWorld;
 
 namespace ColonistsDeco
 {
-    enum DecoTechProgression
-    {
-        Neolithic,
-        Medieval,
-        Industrial,
-        Spacer,
-        Ultra
-    }
-
     enum DecoLocationType
     {
         Wall,
@@ -20,7 +12,7 @@ namespace ColonistsDeco
 
     class DecoModExtension : DefModExtension
     {
-        public DecoTechProgression decoTechProgression;
+        public TechLevel decoTechLevel;
         public DecoLocationType decoLocationType;
     }
 }
