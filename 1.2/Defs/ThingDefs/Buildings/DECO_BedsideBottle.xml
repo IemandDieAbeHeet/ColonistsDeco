@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="BuildingBase">
+  <defName>DECOBedsideBottle</defName>
+  <label>decorative bottle</label>
+  <description>A decorative bottle. Placed on a bedside table by one of your colonists.</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.BedsideDeco_Default</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Bedside/Book/Book</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <size>(1,1)</size>
+  <building>
+    <isEdifice>false</isEdifice>
+  <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Never</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+        <decoTechLevels>
+            <li>Medieval</li>
+        </decoTechLevels>
+        <decoLocationType>Bedside</decoLocationType>
+    </li>
+  </modExtensions>
+</ThingDef>
+
+</Defs>

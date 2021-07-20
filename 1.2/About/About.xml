@@ -23,29 +23,6 @@ Feel free to contact me if you have any problems with the mod.
 
 Current version - [V2.0.0]
 </description>
-
-<descriptionsByVersion>
-
-	<v1.2>This mod adds the ability for colonists to decorate their own rooms.
-
-	Features:
-	- Colonists will decorate their bedroom with all kinds of decorations. Doing this levels up their construction skill.
-	- The decorations that are hung up by your colonists reflect the tech level of your colony.
-
-	Planned:
-	- Add room specific decorations
-	- Add customisable decorations
-
-	Camera+ is recommended if you want to see the decorations in detail.
-
-	Feel free to contact me if you have any problems with the mod.
-
-	Current version - [V1.2.0]
-
-	</v1.2>
-
-</descriptionsByVersion>
-
 <loadAfter>
 		<li>Ludeon.RimWorld</li>
         <li>Ludeon.RimWorld.Royalty</li>
@@ -53,5 +30,6 @@ Current version - [V2.0.0]
 		<li>brrainz.harmony</li>
 		<li>UnlimitedHugs.HugsLib</li>
 </loadAfter>
+
 
 </ModMetaData>
