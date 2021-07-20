@@ -36,7 +36,9 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechLevel>Industrial</decoTechLevel>
+      <decoTechLevels>
+        <li>Industrial</li>
+      </decoTechLevels>
       <decoLocationType>Ceiling</decoLocationType>
     </li>
   </modExtensions>

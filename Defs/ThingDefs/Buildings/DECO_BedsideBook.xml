@@ -36,8 +36,10 @@
 	<defaultPlacingRot>South</defaultPlacingRot>
   <modExtensions>
     <li Class="ColonistsDeco.DecoModExtension">
-      <decoTechLevel>Medieval</decoTechLevel>
-      <decoLocationType>Bedside</decoLocationType>
+        <decoTechLevels>
+            <li>Medieval</li>
+        </decoTechLevels>
+        <decoLocationType>Bedside</decoLocationType>
     </li>
   </modExtensions>
 </ThingDef>

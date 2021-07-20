@@ -10,9 +10,9 @@ namespace ColonistsDeco
 
 		public static ThingDef tornDef;
 
-		public static Dictionary<ThingDef, TechLevel> thingTechProgression = new Dictionary<ThingDef, TechLevel>();
+		public static Dictionary<ThingDef, List<TechLevel>> thingTechProgression = new Dictionary<ThingDef, List<TechLevel>>();
 
-		public static Dictionary<ThingDef, (TechLevel, DecoLocationType)> decoDictionary = new Dictionary<ThingDef, (TechLevel, DecoLocationType)>();
+		public static Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)> decoDictionary = new Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)>();
 
 		public static List<ThingDef> ceilingDefs = new List<ThingDef>();
 
@@ -37,8 +37,9 @@ namespace ColonistsDeco
 			{
 				if (allDef.HasModExtension<DecoModExtension>())
 				{
-					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechLevel);
-					decoDictionary.Add(allDef, (allDef.GetModExtension<DecoModExtension>().decoTechLevel, allDef.GetModExtension<DecoModExtension>().decoLocationType));
+					Log.Message(allDef.GetModExtension<DecoModExtension>().decoTechLevels[0].ToString());
+					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechLevels);
+					decoDictionary.Add(allDef, (allDef.GetModExtension<DecoModExtension>().decoTechLevels, allDef.GetModExtension<DecoModExtension>().decoLocationType));
 
 					switch (allDef.GetModExtension<DecoModExtension>().decoLocationType)
                     {
@@ -124,10 +125,10 @@ namespace ColonistsDeco
 
 			foreach (ThingDef deco in decoDictionary.Keys)
             {
-				(TechLevel, DecoLocationType) decoTuple;
+				(List<TechLevel>, DecoLocationType) decoTuple;
 				if(decoDictionary.TryGetValue(deco, out decoTuple))
                 {
-					if(decoTuple.Item1 == techLevel && decoTuple.Item2 == decoLocationType)
+					if(decoTuple.Item1.Any(t => t == techLevel) && decoTuple.Item2 == decoLocationType)
                     {
 						decoList.Add(deco);
                     } else if(decoTuple.Item2 == decoLocationType) {
@@ -153,10 +154,10 @@ namespace ColonistsDeco
 
 			foreach(ThingDef deco in decoDictionary.Keys)
             {
-				(TechLevel, DecoLocationType) decoTuple;
+				(List<TechLevel>, DecoLocationType) decoTuple;
 				if (decoDictionary.TryGetValue(deco, out decoTuple))
 				{
-					if (decoTuple.Item1 == techLevel && decoTuple.Item2 == decoLocationType)
+					if (decoTuple.Item1.Any(t => t == techLevel) && decoTuple.Item2 == decoLocationType)
 					{
 						count++;
 					}

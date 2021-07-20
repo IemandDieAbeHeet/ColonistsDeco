@@ -1,5 +1,6 @@
 ﻿using Verse;
 using RimWorld;
+using System.Collections.Generic;
 
 namespace ColonistsDeco
 {
@@ -12,7 +13,7 @@ namespace ColonistsDeco
 
     class DecoModExtension : DefModExtension
     {
-        public TechLevel decoTechLevel;
+        public List<TechLevel> decoTechLevels = new List<TechLevel>();
         public DecoLocationType decoLocationType;
     }
 }
