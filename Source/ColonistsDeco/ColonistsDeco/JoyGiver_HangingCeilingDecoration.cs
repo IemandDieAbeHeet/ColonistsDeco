@@ -26,7 +26,7 @@ namespace ColonistsDeco
 
             foreach (IntVec3 tempCeilingLocation in tempCeilingLocations)
             {
-                if (tempCeilingLocation.IsValid && tempCeilingLocation.InBounds(pawnMap) && !tempCeilingLocation.Filled(pawnMap) && tempCeilingLocation.Roofed(pawnMap))
+                if (tempCeilingLocation.IsValid && tempCeilingLocation.InBounds(pawnMap) && !tempCeilingLocation.Filled(pawnMap) && tempCeilingLocation.GetThingList(pawnMap).Count == 0 && tempCeilingLocation.Roofed(pawnMap))
                 {
                     ceilingLocations.Add(tempCeilingLocation);
                 }

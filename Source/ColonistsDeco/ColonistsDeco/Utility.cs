@@ -37,7 +37,6 @@ namespace ColonistsDeco
 			{
 				if (allDef.HasModExtension<DecoModExtension>())
 				{
-					Log.Message(allDef.GetModExtension<DecoModExtension>().decoTechLevels[0].ToString());
 					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechLevels);
 					decoDictionary.Add(allDef, (allDef.GetModExtension<DecoModExtension>().decoTechLevels, allDef.GetModExtension<DecoModExtension>().decoLocationType));
 

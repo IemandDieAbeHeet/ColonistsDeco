@@ -14,7 +14,6 @@ namespace ColonistsDeco
         {
             Thing wall = new Thing();
             Map pawnMap = pawn.Map;
-
             if (pawn.WorkTypeIsDisabled(WorkTypeDefOf.Construction) || pawn.IsPrisoner || pawn.ownership.OwnedBed == null || !pawn.TryGetComp<CompPawnDeco>().CanDecorate || pawn.story.traits.HasTrait(DefDatabase<TraitDef>.GetNamed("Ascetic")) || !Utility.TechLevelHasDecos(pawn.Faction.def.techLevel, DecoLocationType.Wall))
             {
                 return null;
