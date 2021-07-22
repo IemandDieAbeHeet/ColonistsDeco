@@ -21,6 +21,11 @@
     <Flammability>10</Flammability>
     <Mass>2</Mass>
   </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+        <decorationName>Spikeball</decorationName>
+    </li>
+  </comps>
   <size>(1,1)</size>
   <building>
     <isEdifice>false</isEdifice>

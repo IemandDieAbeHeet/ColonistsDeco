@@ -76,7 +76,7 @@
     <Compile Include="CompProperties_Decoration.cs" />
     <Compile Include="CompProperties_PawnDeco.cs" />
     <Compile Include="Dialog_Confirm.cs" />
-    <Compile Include="Dialog_Poster.cs" />
+    <Compile Include="Dialog_Inspect.cs" />
     <Compile Include="Buildings\CeilingDeco_Default.cs" />
     <Compile Include="JobDriver_DecoratingBedsideTable.cs" />
     <Compile Include="JobDriver_HangingCeilingDecoration.cs" />

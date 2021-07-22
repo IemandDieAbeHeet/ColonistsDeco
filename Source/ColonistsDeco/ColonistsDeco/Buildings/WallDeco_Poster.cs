@@ -27,7 +27,7 @@ namespace ColonistsDeco
         {
 			string decorationName = this.TryGetComp<CompDecoration>().decorationName;
 			string decorationCreator = this.TryGetComp<CompDecoration>().decorationCreator;
-			Find.WindowStack.Add(new Dialog_Poster("\"" + decorationName + "\", " + "hung up by: " + decorationCreator, posterImage));
+			Find.WindowStack.Add(new Dialog_Inspect("\"" + decorationName + "\", " + "hung up by: " + decorationCreator, posterImage));
 		}
 	}
 }

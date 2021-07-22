@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ColonistsDeco
 {
-	public class Dialog_Poster : Window
+	public class Dialog_Inspect : Window
 	{
 		public TaggedString text;
 
@@ -32,7 +32,7 @@ namespace ColonistsDeco
 			}
 		}
 
-		public Dialog_Poster(string text, Texture2D image, bool destructive = false, string title = null)
+		public Dialog_Inspect(string text, Texture2D image, bool destructive = false, string title = null)
 		{
 			this.text = text;
 			this.image = image;

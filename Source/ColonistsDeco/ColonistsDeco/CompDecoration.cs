@@ -15,7 +15,7 @@ namespace ColonistsDeco
             base.Initialize(props);
 
             decorationName = Props.decorationName;
-            decorationCreator = "No one";
+            decorationCreator = "Unknown";
         }
     }
 }
