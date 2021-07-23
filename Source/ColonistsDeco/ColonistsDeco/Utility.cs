@@ -99,7 +99,7 @@ namespace ColonistsDeco
 			return false;
 		}
 
-		public static bool IsBedside(Thing thing)
+		public static bool IsBedsideDeco(Thing thing)
 		{
 			if (bedsideHashes.Contains(thing.def.GetHashCode()))
 			{

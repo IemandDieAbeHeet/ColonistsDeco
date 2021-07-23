@@ -44,6 +44,11 @@ namespace ColonistsDeco
                     List<ThingDef> ceilingDecos = Utility.GetDecoList(DecoLocationType.Ceiling, pawn.Faction.def.techLevel);
                     thing = ThingMaker.MakeThing(ceilingDecos.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
+                    CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
+                    if (compDecoration != null)
+                    {
+                        compDecoration.decorationCreator = pawn.Name.ToStringShort;
+                    }
                     GenSpawn.Spawn(thing, placeInfo.Cell, Map, Rot4.North, WipeMode.Vanish, false);
                     ReadyForNextToil();
                 }

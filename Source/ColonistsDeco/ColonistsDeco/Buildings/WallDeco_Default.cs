@@ -9,14 +9,23 @@ namespace ColonistsDeco
 		public string InspectStringAddon = "Decoration: ";
 
 		private Texture2D decoImage = null;
+		private Texture2D inspectIcon = null;
+
 		override public IEnumerable<Gizmo> GetGizmos()
 		{
 			decoImage = (Texture2D)Graphic.MatSouth.mainTexture;
+			inspectIcon = ContentFinder<Texture2D>.Get("Icons/InspectIcon");
+
+			if (inspectIcon == null || decoImage == null)
+			{
+				yield return null;
+			}
+
 			Command_Action item = new Command_Action
 			{
 				defaultLabel = "Inspect Decoration",
 				defaultDesc = "Take a closer look at the decoration that one of your colonists hung up",
-				icon = decoImage,
+				icon = inspectIcon,
 				action = openInspectWindow
 			};
 

@@ -24,7 +24,7 @@ namespace ColonistsDeco
             for(int i = bedsideTables.Count - 1; i >= 0; i--)
             {
                 IList <Thing> ThingList = bedsideTables[i].Position.GetThingList(pawnMap);
-                if (ThingList.Any(b => Utility.IsBedside(b)))
+                if (ThingList.Any(b => Utility.IsBedsideDeco(b)))
                 {
                     bedsideTables.RemoveAt(i);
                 }
