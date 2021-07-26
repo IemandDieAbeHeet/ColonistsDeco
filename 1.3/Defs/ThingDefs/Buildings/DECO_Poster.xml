@@ -345,7 +345,7 @@
 <ThingDef ParentName="BuildingBase">
   <defName>DECOPosterUnity</defName>
   <label>decorative poster</label>
-  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <description>A decorative poster. Hung up by one of your colonists. (designed by: Spike Berd)</description>
   <category>Building</category>
   <thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
@@ -394,7 +394,7 @@
 <ThingDef ParentName="BuildingBase">
   <defName>DECOPosterElectric</defName>
   <label>decorative poster</label>
-  <description>A decorative poster. Hung up by one of your colonists.</description>
+  <description>A decorative poster. Hung up by one of your colonists. (designed by: Spike Berd)</description>
   <category>Building</category>
   <thingClass>ColonistsDeco.WallDeco_Poster</thingClass>
 	<graphicData>
