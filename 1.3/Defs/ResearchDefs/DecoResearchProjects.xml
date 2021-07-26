@@ -1,0 +1,27 @@
+<?Yml version="1.0" encoding="utf8" ?>
+<Defs>
+
+    <ResearchProjectDef>
+		<defName>IndustrialDecorations</defName>
+		<label>Industrial decorations</label>
+        <tab>Decorations</tab>
+		<description>Unlock the industrial decorations.</description>
+		<baseCost>600</baseCost>
+		<techLevel>Industrial</techLevel>
+		<researchViewY>2.00</researchViewY>
+		<researchViewX>0.00</researchViewX>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>SpacerDecorations</defName>
+		<label>Spacer decorations</label>
+        <tab>Decorations</tab>
+		<description>Unlock the spacer decorations.</description>
+		<baseCost>1000</baseCost>
+		<techLevel>Spacer</techLevel>
+        <prerequisites><li>IndustrialDecorations</li></prerequisites>
+		<researchViewY>2.00</researchViewY>
+		<researchViewX>1.00</researchViewX>
+	</ResearchProjectDef>
+
+</Defs>

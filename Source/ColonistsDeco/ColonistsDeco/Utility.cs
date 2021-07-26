@@ -28,6 +28,8 @@ namespace ColonistsDeco
 
 		public static List<int> bedsideHashes = new List<int>();
 
+		public static List<ResearchProjectDef> researchProjectDefs = new List<ResearchProjectDef>();
+
 		public static void LoadDefs()
 		{
 			CompProperties_AttachableThing attachableThingComp = new CompProperties_AttachableThing();
@@ -79,6 +81,14 @@ namespace ColonistsDeco
 						break;
 				}
 			}
+
+			foreach(ResearchProjectDef researchDef in DefDatabase<ResearchProjectDef>.AllDefs)
+            {
+				if(researchDef.tab == DefDatabase<ResearchTabDef>.GetNamed("Decorations"))
+                {
+					researchProjectDefs.Add(researchDef);
+                }
+            }
 		}
 
 		public static bool IsCeilingDeco(Thing thing)
@@ -117,37 +127,47 @@ namespace ColonistsDeco
 			return false;
 		}
 
-		public static List<ThingDef> GetDecoList(DecoLocationType decoLocationType, TechLevel techLevel)
-        {
+		public static List<ThingDef> GetDecoList(DecoLocationType decoLocationType)
+		{
 			List<ThingDef> decoList = new List<ThingDef>();
 			List<ThingDef> locationDecoList = new List<ThingDef>();
+			TechLevel maxTechLevel = TechLevel.Neolithic;
+
+			foreach (ResearchProjectDef researchProjectDef in researchProjectDefs)
+			{
+				if (researchProjectDef.IsFinished)
+				{
+					maxTechLevel = researchProjectDef.techLevel;
+				}
+			}
 
 			foreach (ThingDef deco in decoDictionary.Keys)
-            {
+			{
 				(List<TechLevel>, DecoLocationType) decoTuple;
-				if(decoDictionary.TryGetValue(deco, out decoTuple))
-                {
-					if(decoTuple.Item1.Any(t => t == techLevel) && decoTuple.Item2 == decoLocationType)
-                    {
+				if (decoDictionary.TryGetValue(deco, out decoTuple))
+				{
+					if (decoTuple.Item1.Any(t => t == maxTechLevel) && decoTuple.Item2 == decoLocationType)
+					{
 						decoList.Add(deco);
-                    } else if(decoTuple.Item2 == decoLocationType) {
+					}
+					else if (decoTuple.Item2 == decoLocationType)
+					{
 						locationDecoList.Add(deco);
 					}
-                }
-            }
+				}
+			}
 
-			if(decoList.Count > 0)
-            {
+			if (decoList.Count > 0)
+			{
 				return decoList;
-            } else
-            {
-				Log.Warning("No associating deco's found, returning associating location deco's");
-
+			}
+			else
+			{
 				return locationDecoList;
 			}
 		}
-
-		public static bool TechLevelHasDecos(TechLevel techLevel, DecoLocationType decoLocationType)
+		
+		public static bool ResearchLevelHasDecos(ResearchProjectDef researchLevel, DecoLocationType decoLocationType)
         {
 			int count = 0;
 
@@ -156,7 +176,7 @@ namespace ColonistsDeco
 				(List<TechLevel>, DecoLocationType) decoTuple;
 				if (decoDictionary.TryGetValue(deco, out decoTuple))
 				{
-					if (decoTuple.Item1.Any(t => t == techLevel) && decoTuple.Item2 == decoLocationType)
+					if (decoTuple.Item1.Any(t => t == researchLevel.techLevel) && decoTuple.Item2 == decoLocationType)
 					{
 						count++;
 					}
@@ -171,5 +191,22 @@ namespace ColonistsDeco
 				return false;
             }
         }
+
+		public static ResearchProjectDef GetHighestResearchedLevel()
+        {
+			List<ResearchProjectDef> rds = new List<ResearchProjectDef>();
+			ResearchProjectDef rd = new ResearchProjectDef();
+
+			rds = researchProjectDefs;
+			foreach(ResearchProjectDef researchProjectDef in researchProjectDefs)
+            {
+				if (researchProjectDef.IsFinished)
+				{
+					rd = researchProjectDef;
+				}
+            }
+
+			return rd;
+		}
 	}
 }

@@ -47,7 +47,7 @@ namespace ColonistsDeco
                 if (workLeft <= 0f)
                 {
                     Thing thing = new Thing();
-                    List<ThingDef> wallDecos = Utility.GetDecoList(DecoLocationType.Wall, pawn.Faction.def.techLevel);
+                    List<ThingDef> wallDecos = Utility.GetDecoList(DecoLocationType.Wall);
                     thing = ThingMaker.MakeThing(wallDecos.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
                     CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
