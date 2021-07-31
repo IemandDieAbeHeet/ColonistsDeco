@@ -2,7 +2,7 @@
 <Defs>
 
 <ThingDef ParentName="BuildingBase">
-    <defName>DECOArchoIntelligence</defName>
+    <defName>DECOArchoIntelligenceBoard</defName>
     <label>decorative A.I. board</label>
     <description>A decorative Archo intelligence board. Hung up by one of your colonists.</description>
     <category>Building</category>

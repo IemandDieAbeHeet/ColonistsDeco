@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Verse;
 using RimWorld;
+using System.Text.RegularExpressions;
 
 namespace ColonistsDeco
 {
@@ -14,19 +15,19 @@ namespace ColonistsDeco
 
 		public static Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)> decoDictionary = new Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)>();
 
-		public static List<ThingDef> ceilingDefs = new List<ThingDef>();
+		public static List<ThingDef> ceilingDecoDefs = new List<ThingDef>();
 
-		public static List<ThingDef> wallDefs = new List<ThingDef>();
+		public static List<ThingDef> wallDecoDefs = new List<ThingDef>();
 
-		public static List<ThingDef> bedsideDefs = new List<ThingDef>();
-
-		public static int wallHash;
-
-		public static List<int> ceilingHashes = new List<int>();
+		public static List<ThingDef> bedsideDecoDefs = new List<ThingDef>();
 
 		public static List<int> wallHashes = new List<int>();
 
-		public static List<int> bedsideHashes = new List<int>();
+		public static List<int> ceilingDecoHashes = new List<int>();
+
+		public static List<int> wallDecoHashes = new List<int>();
+
+		public static List<int> bedsideDecoHashes = new List<int>();
 
 		public static List<ResearchProjectDef> researchProjectDefs = new List<ResearchProjectDef>();
 
@@ -45,8 +46,8 @@ namespace ColonistsDeco
 					switch (allDef.GetModExtension<DecoModExtension>().decoLocationType)
                     {
 						case DecoLocationType.Wall:
-							wallDefs.Add(allDef);
-							wallHashes.Add(allDef.GetHashCode());
+							wallDecoDefs.Add(allDef);
+							wallDecoHashes.Add(allDef.GetHashCode());
 
 							if(allDef.defName == "DECOPosterTorn")
                             {
@@ -54,12 +55,12 @@ namespace ColonistsDeco
                             }
 							break;
 						case DecoLocationType.Bedside:
-							bedsideDefs.Add(allDef);
-							bedsideHashes.Add(allDef.GetHashCode());
+							bedsideDecoDefs.Add(allDef);
+							bedsideDecoHashes.Add(allDef.GetHashCode());
 							break;
 						case DecoLocationType.Ceiling:
-							ceilingDefs.Add(allDef);
-							ceilingHashes.Add(allDef.GetHashCode());
+							ceilingDecoDefs.Add(allDef);
+							ceilingDecoHashes.Add(allDef.GetHashCode());
 							break;
                     }
 				}
@@ -69,7 +70,12 @@ namespace ColonistsDeco
 					case "Wall":
 						wallDef = allDef;
 						allDef.comps.Add(attachableThingComp);
-						wallHash = allDef.GetHashCode();
+						wallHashes.Add(allDef.GetHashCode());
+						break;
+					case var val when new Regex("(Smoothed)+").IsMatch(val):
+						wallDef = allDef;
+						allDef.comps.Add(attachableThingComp);
+						wallHashes.Add(allDef.GetHashCode());
 						break;
 					case "EndTable":
 						allDef.comps.Add(attachableThingComp);
@@ -93,7 +99,7 @@ namespace ColonistsDeco
 
 		public static bool IsCeilingDeco(Thing thing)
         {
-			if (ceilingHashes.Contains(thing.def.GetHashCode()))
+			if (ceilingDecoHashes.Contains(thing.def.GetHashCode()))
             {
 				return true;
             }
@@ -102,7 +108,7 @@ namespace ColonistsDeco
 
 		public static bool IsWallDeco(Thing thing)
 		{
-			if (wallHashes.Contains(thing.def.GetHashCode()))
+			if (wallDecoHashes.Contains(thing.def.GetHashCode()))
 			{
 				return true;
 			}
@@ -111,7 +117,7 @@ namespace ColonistsDeco
 
 		public static bool IsBedsideDeco(Thing thing)
 		{
-			if (bedsideHashes.Contains(thing.def.GetHashCode()))
+			if (bedsideDecoHashes.Contains(thing.def.GetHashCode()))
 			{
 				return true;
 			}
@@ -120,7 +126,7 @@ namespace ColonistsDeco
 
 		public static bool IsWall(Thing thing)
 		{
-			if (wallHash == thing.def.GetHashCode())
+			if (wallHashes.Any(h => h == thing.def.GetHashCode()))
 			{
 				return true;
 			}

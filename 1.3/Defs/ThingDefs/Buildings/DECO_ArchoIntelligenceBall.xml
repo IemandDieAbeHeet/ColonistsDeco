@@ -2,14 +2,14 @@
 <Defs>
 
 <ThingDef ParentName="BuildingBase">
-    <defName>DECOArchoIntelligence</defName>
+    <defName>DECOArchoIntelligenceBall</defName>
     <label>decorative archo intelligence board</label>
     <description>A decorative Archo intelligence ball. Hung up by one of your colonists.</description>
     <category>Building</category>
-    <thingClass>ColonistsDeco.WallDeco_Default</thingClass>
+    <thingClass>ColonistsDeco.CeilingDeco_Default</thingClass>
     <graphicData>
-        <texPath>Bedroom/Ceiling/ArchoIntelligenceBall/ArchoIntelligence</texPath>
-        <graphicClass>Graphic_Multi</graphicClass>
+        <texPath>Bedroom/Ceiling/ArchoIntelligenceBall/ArchoIntelligenceBall</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
         <drawSize>(1,1)</drawSize>
     </graphicData>
     <altitudeLayer>BuildingOnTop</altitudeLayer>

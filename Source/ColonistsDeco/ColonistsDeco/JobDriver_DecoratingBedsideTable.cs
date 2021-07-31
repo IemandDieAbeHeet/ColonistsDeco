@@ -44,7 +44,7 @@ namespace ColonistsDeco
                 workLeft -= statValue * 1.7f;
                 if (workLeft <= 0f)
                 {
-                    Thing thing = ThingMaker.MakeThing(Utility.bedsideDefs.RandomElement());
+                    Thing thing = ThingMaker.MakeThing(Utility.bedsideDecoDefs.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
                     bedsideInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
                     GenSpawn.Spawn(thing, bedsideInfo.Cell, Map, bedsideInfo.Thing.Rotation, WipeMode.Vanish, false);

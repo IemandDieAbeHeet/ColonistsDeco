@@ -26,7 +26,7 @@ namespace ColonistsDeco
             {
                 foreach(Thing thing in cell.GetThingList(map))
                 {
-                    if(Utility.wallDefs.Contains(thing.def) && (thing.Position + thing.Rotation.FacingCell) == c)
+                    if(Utility.wallDecoDefs.Contains(thing.def) && (thing.Position + thing.Rotation.FacingCell) == c)
                     {
                         __result += thing.GetStatValue(StatDefOf.Beauty);
                     }
