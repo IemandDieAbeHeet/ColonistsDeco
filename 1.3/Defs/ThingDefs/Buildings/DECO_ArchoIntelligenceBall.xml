@@ -3,12 +3,12 @@
 
 <ThingDef ParentName="BuildingBase">
     <defName>DECOArchoIntelligence</defName>
-    <label>decorative A.I. board</label>
-    <description>A decorative Archo intelligence board. Hung up by one of your colonists.</description>
+    <label>decorative archo intelligence board</label>
+    <description>A decorative Archo intelligence ball. Hung up by one of your colonists.</description>
     <category>Building</category>
     <thingClass>ColonistsDeco.WallDeco_Default</thingClass>
     <graphicData>
-        <texPath>Bedroom/Wall/Ornaments/ArchoIntelligenceBoard/ArchoIntelligenceBoard</texPath>
+        <texPath>Bedroom/Ceiling/ArchoIntelligenceBall/ArchoIntelligence</texPath>
         <graphicClass>Graphic_Multi</graphicClass>
         <drawSize>(1,1)</drawSize>
     </graphicData>
@@ -23,7 +23,7 @@
     </statBases>
     <comps>
     <li Class="ColonistsDeco.CompProperties_Decoration">
-        <decorationName>Archo intelligence board</decorationName>
+        <decorationName>Archo intelligence ball</decorationName>
     </li>
     </comps>
     <size>(1,1)</size>
