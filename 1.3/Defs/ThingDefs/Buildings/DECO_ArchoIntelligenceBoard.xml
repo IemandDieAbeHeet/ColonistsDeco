@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="BuildingBase">
+    <defName>DECOArchoIntelligence</defName>
+    <label>decorative archo intelligence board</label>
+    <description>A decorative archo intelligence board. Hung up by one of your colonists.</description>
+    <category>Building</category>
+    <thingClass>ColonistsDeco.WallDeco_Default</thingClass>
+    <graphicData>
+        <texPath>Bedroom/Wall/Ornaments/ArchoIntelligence/ArchoIntelligence</texPath>
+        <graphicClass>Graphic_Multi</graphicClass>
+        <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>Standable</passability>
+    <statBases>
+        <MaxHitPoints>10</MaxHitPoints>
+        <Beauty>50</Beauty>
+        <WorkToBuild>100</WorkToBuild>
+        <Flammability>10</Flammability>
+        <Mass>2</Mass>
+    </statBases>
+    <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+        <decorationName>Archo intelligence board</decorationName>
+    </li>
+    </comps>
+    <size>(1,1)</size>
+    <building>
+        <forceShowRoomStats>true</forceShowRoomStats>
+        <isEdifice>false</isEdifice>
+        <canPlaceOverWall>true</canPlaceOverWall>
+    </building>
+    <rotatable>true</rotatable>
+    <selectable>true</selectable>
+    <destroyable>true</destroyable>
+    <useHitPoints>true</useHitPoints>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <modExtensions>
+        <li Class="ColonistsDeco.DecoModExtension">
+            <decoTechLevels>
+                <li>Ultra</li>
+                <li>Spacer</li>
+                <li>Archotech</li>
+            </decoTechLevels>
+            <decoLocationType>Wall</decoLocationType>
+        </li>
+    </modExtensions>
+</ThingDef>
+
+</Defs>
