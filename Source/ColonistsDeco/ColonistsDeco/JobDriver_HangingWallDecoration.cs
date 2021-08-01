@@ -48,7 +48,32 @@ namespace ColonistsDeco
                 {
                     Thing thing = new Thing();
                     List<ThingDef> wallDecos = Utility.GetDecoList(DecoLocationType.Wall);
-                    thing = ThingMaker.MakeThing(wallDecos.RandomElement());
+
+                    IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
+
+                    ThingDef wallDeco;
+
+                    List<ThingDef> possibleWallDecos = wallDecos;
+                    foreach (Thing thingInRoom in thingsInRoom)
+                    {
+                        if (Utility.IsCeilingDeco(thingInRoom))
+                        {
+                            possibleWallDecos.Remove(thingInRoom.def);
+                        }
+                    }
+
+                    Log.Message(possibleWallDecos.Count.ToString());
+                    if (possibleWallDecos.Count > 0)
+                    {
+                        wallDeco = possibleWallDecos.RandomElement();
+                    }
+                    else
+                    {
+                        wallDeco = wallDecos.RandomElement();
+                    }
+
+                    thing = ThingMaker.MakeThing(wallDeco);
+
                     thing.SetFactionDirect(pawn.Faction);
                     CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
                     if(compDecoration != null)
