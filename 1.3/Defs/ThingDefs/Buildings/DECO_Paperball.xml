@@ -2,13 +2,13 @@
 <Defs>
 
 <ThingDef ParentName="BuildingBase">
-  <defName>DECOSpikeball</defName>
-  <label>decorative spikeball</label>
-  <description>A decorative spikeball. Hung up by one of your colonists.</description>
+  <defName>DECOPaperball</defName>
+  <label>decorative paper ball</label>
+  <description>A decorative paper ball. Hung up by one of your colonists.</description>
   <category>Building</category>
 	<thingClass>ColonistsDeco.CeilingDeco_Default</thingClass>
 	<graphicData>
-    <texPath>Bedroom/Ceiling/Spikeball</texPath>
+    <texPath>Bedroom/Ceiling/Paperball</texPath>
     <graphicClass>Graphic_Random</graphicClass>
     <drawSize>(1,1)</drawSize>
   </graphicData>
@@ -23,7 +23,7 @@
   </statBases>
   <comps>
     <li Class="ColonistsDeco.CompProperties_Decoration">
-        <decorationName>Spikeball</decorationName>
+        <decorationName>Paperball</decorationName>
     </li>
   </comps>
   <size>(1,1)</size>
