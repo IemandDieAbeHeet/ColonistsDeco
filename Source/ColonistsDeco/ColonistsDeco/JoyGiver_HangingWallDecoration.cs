@@ -31,18 +31,11 @@ namespace ColonistsDeco
                 if (wallLocation.IsValid && wallLocation.InBounds(pawnMap))
                 {
                     IList<Thing> wallTempThingList = wallLocation.GetThingList(pawnMap);
-                    if (wallTempThingList.Any(w => Utility.IsWallDeco(w)))
+                    foreach (Thing wallThing in wallTempThingList)
                     {
-                        continue;
-                    }
-                    else
-                    {
-                        foreach (Thing wallThing in wallTempThingList)
+                        if (Utility.IsWall(wallThing))
                         {
-                            if (Utility.IsWall(wallThing))
-                            {
-                                wallThingList.Add(wallThing);
-                            }
+                            wallThingList.Add(wallThing);
                         }
                     }
                 }
@@ -75,7 +68,7 @@ namespace ColonistsDeco
                 i = num;
             }
 
-            if (pawn.CanReserveAndReach(randomPlacePos, PathEndMode.OnCell, Danger.None, 1, -1) && !randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || wallDecoAmount >= ColonistsDecoMain.Settings.wallDecorationLimit)
+            if (pawn.CanReserveAndReach(randomPlacePos, PathEndMode.OnCell, Danger.None, 1, -1) && pawn.CanReserve(wall, 1, -1, null, false) && !randomPlacePos.IsValid || wall == null || wall.def == new ThingDef() || wallDecoAmount >= ColonistsDecoMain.Settings.wallDecorationLimit)
             {
                 return null;
             }

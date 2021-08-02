@@ -16,7 +16,7 @@ namespace ColonistsDeco
         protected LocalTargetInfo wallInfo => job.GetTarget(TargetIndex.B);
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return pawn.Reserve(wallInfo, job, 1, 0, null, errorOnFailed) && pawn.Reserve(placeInfo, job, 1, -1, null, errorOnFailed);
+            return pawn.Reserve(placeInfo, job, 1, -1, null, errorOnFailed);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
