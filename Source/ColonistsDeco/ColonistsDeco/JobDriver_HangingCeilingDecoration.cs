@@ -47,7 +47,7 @@ namespace ColonistsDeco
 
                     ThingDef ceilingDeco;
 
-                    List<ThingDef> possibleCeilingDecos = ceilingDecos;
+                    List<ThingDef> possibleCeilingDecos = new List<ThingDef>(ceilingDecos);
                     foreach (Thing thingInRoom in thingsInRoom)
                     {
                         if(Utility.IsCeilingDeco(thingInRoom))
@@ -56,7 +56,6 @@ namespace ColonistsDeco
                         }
                     }
 
-                    Log.Message(possibleCeilingDecos.Count.ToString());
                     if (possibleCeilingDecos.Count > 0)
                     {
                         ceilingDeco = possibleCeilingDecos.RandomElement();

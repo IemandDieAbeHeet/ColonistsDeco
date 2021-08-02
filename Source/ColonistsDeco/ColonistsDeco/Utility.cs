@@ -214,5 +214,35 @@ namespace ColonistsDeco
 
 			return rd;
 		}
+
+		public static bool IsCornerWall(Thing wall, Map pawnMap)
+		{
+			IntVec3[][] checkList = new IntVec3[2][] {
+				new IntVec3[] { new IntVec3(0, 0, 1), new IntVec3(1, 0, 0) },
+				new IntVec3[] { new IntVec3(0, 0, -1), new IntVec3(-1, 0, 0) }
+			};
+
+			for (int i = 0; i < checkList.Length; i++)
+			{
+				for (int j = 0; j < checkList[i].Length; j++)
+				{
+					int c = 0;
+					IntVec3 intVec = wall.Position + checkList[i][j];
+					foreach (Thing thing in intVec.GetThingList(pawnMap))
+					{
+						if (IsWall(thing))
+						{
+							c++;
+							if (c == 2)
+							{
+								return true;
+							}
+						}
+					}
+				}
+			}
+
+			return false;
+		}
 	}
 }
