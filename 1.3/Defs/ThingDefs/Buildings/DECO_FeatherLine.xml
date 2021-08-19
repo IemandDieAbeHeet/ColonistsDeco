@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="BuildingBase">
+  <defName>DECOFeatherLine</defName>
+  <label>decorative feather line</label>
+  <description>Feathers hanging from some string. Hung up by one of your colonists.</description>
+  <category>Building</category>
+	<thingClass>ColonistsDeco.CeilingDeco_Default</thingClass>
+	<graphicData>
+    <texPath>Bedroom/Ceiling/FeatherLine</texPath>
+    <graphicClass>Graphic_Random</graphicClass>
+    <drawSize>(1,1)</drawSize>
+  </graphicData>
+  <altitudeLayer>BuildingOnTop</altitudeLayer>
+  <passability>Standable</passability>
+	<statBases>
+    <MaxHitPoints>10</MaxHitPoints>
+    <Beauty>50</Beauty>
+    <WorkToBuild>100</WorkToBuild>
+    <Flammability>10</Flammability>
+    <Mass>2</Mass>
+  </statBases>
+  <comps>
+    <li Class="ColonistsDeco.CompProperties_Decoration">
+        <decorationName>Feather line</decorationName>
+    </li>
+  </comps>
+  <size>(1,1)</size>
+  <building>
+    <isEdifice>false</isEdifice>
+  <canPlaceOverWall>true</canPlaceOverWall>
+  </building>
+	<tickerType>Never</tickerType>
+  <rotatable>true</rotatable>
+	<selectable>true</selectable>
+	<destroyable>true</destroyable>
+	<useHitPoints>true</useHitPoints>
+	<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+	<clearBuildingArea>false</clearBuildingArea>
+	<defaultPlacingRot>South</defaultPlacingRot>
+  <modExtensions>
+    <li Class="ColonistsDeco.DecoModExtension">
+      <decoTechLevels>
+        <li>Neolithic</li>
+      </decoTechLevels>
+      <decoLocationType>Ceiling</decoLocationType>
+    </li>
+  </modExtensions>
+</ThingDef>
+
+  </Defs>
