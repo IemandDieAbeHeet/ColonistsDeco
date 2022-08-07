@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="66595869-3359-4785-a33d-a8a01ca98fa3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.vs/ColonistsDeco/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.vs/ColonistsDeco/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ColonistsDeco.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../ColonistsDeco.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ColonistsDeco/v16/.suo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/slnx.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Buildings/BedsideDeco_Default.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Buildings/CeilingDeco_Default.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Buildings/WallDeco_Default.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Buildings/WallDeco_Poster.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/ColonistsDeco.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/ColonistsDecoMain.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/ColonistsDecoStartup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/CompAttachableThing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/CompDecoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/CompPawnDeco.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/CompProperties_AttachableThing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/CompProperties_Decoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/CompProperties_PawnDeco.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/DecoModExtension.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Dialog_Confirm.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Dialog_Inspect.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/HarmonyPatches.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/JobDriver_DecoratingBedsideTable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/JobDriver_HangingCeilingDecoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/JobDriver_HangingWallDecoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/JoyGiver_DecoratingBedsideTable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/JoyGiver_HangingCeilingDecoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/JoyGiver_HangingWallDecoration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Settings/ColonistsDecoModSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Settings/ColonistsDecoModSettingsUtil.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/Utility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/ColonistsDeco.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/ColonistsDeco.csproj.CopyComplete" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/ColonistsDeco.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/ColonistsDeco.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/ColonistsDeco.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/ColonistsDeco.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/DesignTimeResolveAssemblyReferences.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColonistsDeco/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="2D2NMOlpLh8NIoF6IoIqkk1paSi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "rider.run.widget.enabled.cache": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="66595869-3359-4785-a33d-a8a01ca98fa3" name="Changes" comment="" />
+      <created>1659893170613</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659893170613</updated>
+      <workItem from="1659893175167" duration="62000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
