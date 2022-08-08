@@ -46,7 +46,6 @@ namespace Main
                 workLeft -= statValue * 1.7f;
                 if (workLeft <= 0f)
                 {
-                    Thing thing = new Thing();
                     List<ThingDef> wallDecos = Utility.GetDecoList(DecoLocationType.Wall);
 
                     IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
@@ -71,7 +70,7 @@ namespace Main
                         wallDeco = wallDecos.RandomElement();
                     }
 
-                    thing = ThingMaker.MakeThing(wallDeco);
+                    Thing thing = ThingMaker.MakeThing(wallDeco);
 
                     thing.SetFactionDirect(pawn.Faction);
                     CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
