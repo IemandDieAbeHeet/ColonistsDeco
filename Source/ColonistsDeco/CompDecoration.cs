@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
     public class CompDecoration : ThingComp
     {

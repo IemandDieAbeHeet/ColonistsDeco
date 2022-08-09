@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Verse;
 using RimWorld;
+using Verse;
 using Verse.AI;
 
-namespace Main
+namespace ColonistsDeco
 {
     class JoyGiver_DecoratingBedsideTable : JoyGiver
     {

@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
     class CompProperties_AttachableThing : CompProperties
     {

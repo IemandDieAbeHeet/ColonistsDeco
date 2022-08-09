@@ -1,8 +1,8 @@
-﻿using Verse;
-using RimWorld;
+﻿using RimWorld;
 using UnityEngine;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco.Buildings
 {
     class BedsideDeco_Default : Building
     {

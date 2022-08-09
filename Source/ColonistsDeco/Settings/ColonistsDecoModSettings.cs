@@ -1,8 +1,8 @@
-﻿using Verse;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco.Settings
 {
     internal class ColonistsDecoModSettings : ModSettings
 	{

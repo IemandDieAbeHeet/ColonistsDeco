@@ -1,9 +1,6 @@
 ﻿using Verse;
-using RimWorld;
-using System;
-using HarmonyLib;
 
-namespace Main
+namespace ColonistsDeco
 {
     [StaticConstructorOnStartup]
     static class ColonistsDecoStartup

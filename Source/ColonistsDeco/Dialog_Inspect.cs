@@ -1,7 +1,7 @@
-﻿using Verse;
-using UnityEngine;
+﻿using UnityEngine;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
 	public class Dialog_Inspect : Window
 	{

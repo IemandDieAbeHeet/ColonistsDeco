@@ -1,8 +1,8 @@
 ﻿using System;
-using Verse;
 using UnityEngine;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
 	public class Dialog_Confirm : Dialog_MessageBox
 	{

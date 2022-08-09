@@ -1,8 +1,8 @@
-﻿using Verse;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco.Buildings
 {
     class CeilingDeco_Default : Building
 	{

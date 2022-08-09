@@ -1,7 +1,8 @@
-﻿using Verse;
+﻿using ColonistsDeco.Settings;
 using UnityEngine;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
 	internal class ColonistsDecoMain : Mod
 	{

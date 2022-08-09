@@ -7,7 +7,7 @@
     <ProjectGuid>{7A174F10-585C-44E9-9748-2E50ED4C80C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Main</RootNamespace>
+    <RootNamespace>ColonistsDeco</RootNamespace>
     <AssemblyName>ColonistsDeco</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

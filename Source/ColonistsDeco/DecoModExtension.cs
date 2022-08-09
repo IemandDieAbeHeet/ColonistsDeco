@@ -1,8 +1,8 @@
-﻿using Verse;
+﻿using System.Collections.Generic;
 using RimWorld;
-using System.Collections.Generic;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
     enum DecoLocationType
     {

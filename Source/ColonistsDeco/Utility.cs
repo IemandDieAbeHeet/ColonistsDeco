@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Verse;
-using RimWorld;
 using System.Text.RegularExpressions;
+using RimWorld;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
 	class Utility
 	{

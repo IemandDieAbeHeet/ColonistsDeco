@@ -2,7 +2,7 @@
 using UnityEngine;
 using Verse;
 
-namespace Main
+namespace ColonistsDeco.Settings
 {
     internal static class ColonistsDecoModSettingsUtil
     {

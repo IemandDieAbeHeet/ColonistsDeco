@@ -6,7 +6,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace Main
+namespace ColonistsDeco
 {
     class JoyGiver_HangingWallDecoration : JoyGiver
     {

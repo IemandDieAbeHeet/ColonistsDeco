@@ -1,10 +1,10 @@
-﻿using Verse;
-using RimWorld;
-using System;
-using HarmonyLib;
+﻿using System;
 using System.Collections.Generic;
+using HarmonyLib;
+using RimWorld;
+using Verse;
 
-namespace Main
+namespace ColonistsDeco
 {
     [StaticConstructorOnStartup]
     public static class HarmonyPatches
