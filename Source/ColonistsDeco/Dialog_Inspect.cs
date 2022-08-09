@@ -5,13 +5,13 @@ namespace ColonistsDeco
 {
 	public class Dialog_Inspect : Window
 	{
-		public TaggedString text;
+		private readonly TaggedString _text;
 
-		public Texture2D image;
+		private readonly Texture2D _image;
 
-		public string title;
+		private readonly string _title;
 
-		private Vector2 scrollPosition = Vector2.zero;
+		private Vector2 _scrollPosition = Vector2.zero;
 
 		private const float TitleHeight = 42f;
 
@@ -24,7 +24,7 @@ namespace ColonistsDeco
 			get
 			{
 				float num = DialogHeight;
-				if (title != null)
+				if (_title != null)
 				{
 					num += TitleHeight;
 				}
@@ -32,14 +32,14 @@ namespace ColonistsDeco
 			}
 		}
 
-		public Dialog_Inspect(string text, Texture2D image, bool destructive = false, string title = null)
+		public Dialog_Inspect(string text, Texture2D image, string title = null)
 		{
-			this.text = text;
-			this.image = image;
-			this.title = title;
+			_text = text;
+			_image = image;
+			_title = title;
 			if (text.NullOrEmpty())
 			{
-				this.text = "Null";
+				_text = "Null";
 			}
 			forcePause = false;
 			draggable = true;
@@ -53,22 +53,22 @@ namespace ColonistsDeco
 		public override void DoWindowContents(Rect inRect)
 		{
 			float num = inRect.y;
-			if (!title.NullOrEmpty())
+			if (!_title.NullOrEmpty())
 			{
 				Text.Font = GameFont.Medium;
-				Widgets.Label(new Rect(0f, num, inRect.width, TitleHeight), title);
+				Widgets.Label(new Rect(0f, num, inRect.width, TitleHeight), _title);
 				num += TitleHeight;
 			}
 
 			Text.Font = GameFont.Small;
 			Rect outRect = new Rect(inRect.x, num, inRect.width, inRect.height - 42f - num);
 			float width = outRect.width - 16f;
-			Rect viewRect = new Rect(0f, 0f, width, Text.CalcHeight(text, width));
-			Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
-			Widgets.Label(new Rect(0f, 0f, viewRect.width, viewRect.height), text);
+			Rect viewRect = new Rect(0f, 0f, width, Text.CalcHeight(_text, width));
+			Widgets.BeginScrollView(outRect, ref _scrollPosition, viewRect);
+			Widgets.Label(new Rect(0f, 0f, viewRect.width, viewRect.height), _text);
 			Widgets.EndScrollView();
 
-			Widgets.DrawTextureFitted(outRect, image, 1f);
+			Widgets.DrawTextureFitted(outRect, _image, 1f);
 		}
 	}
 }

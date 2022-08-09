@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -10,25 +11,22 @@ namespace ColonistsDeco
         public override Job TryGiveJob(Pawn pawn)
         {
             IntVec3 ceilingLocation;
-            Map pawnMap = pawn.Map;
+            var pawnMap = pawn.Map;
 
-            if (pawn.WorkTypeIsDisabled(WorkTypeDefOf.Construction) || pawn.IsPrisoner || pawn.ownership.OwnedBed == null || !pawn.TryGetComp<CompPawnDeco>().CanDecorate || pawn.story.traits.HasTrait(DefDatabase<TraitDef>.GetNamed("Ascetic")))
+            if (pawn.WorkTypeIsDisabled(WorkTypeDefOf.Construction) || pawn.IsPrisoner ||
+                pawn.ownership.OwnedBed == null || !pawn.TryGetComp<CompPawnDeco>().CanDecorate ||
+                pawn.story.traits.HasTrait(DefDatabase<TraitDef>.GetNamed("Ascetic")))
             {
                 return null;
             }
 
             pawn.TryGetComp<CompPawnDeco>().ResetDecoCooldown();
 
-            IEnumerable<IntVec3> tempCeilingLocations = pawn.ownership.OwnedBed.GetRoom().Cells;
-            IList<IntVec3> ceilingLocations = new List<IntVec3>();
-
-            foreach (IntVec3 tempCeilingLocation in tempCeilingLocations)
-            {
-                if (tempCeilingLocation.IsValid && tempCeilingLocation.InBounds(pawnMap) && !tempCeilingLocation.Filled(pawnMap) && tempCeilingLocation.GetThingList(pawnMap).Count == 0 && tempCeilingLocation.Roofed(pawnMap))
-                {
-                    ceilingLocations.Add(tempCeilingLocation);
-                }
-            }
+            var tempCeilingLocations = pawn.ownership.OwnedBed.GetRoom().Cells;
+            IList<IntVec3> ceilingLocations = tempCeilingLocations.Where(tempCeilingLocation =>
+                tempCeilingLocation.IsValid && tempCeilingLocation.InBounds(pawnMap) &&
+                !tempCeilingLocation.Filled(pawnMap) && tempCeilingLocation.GetThingList(pawnMap).Count == 0 &&
+                tempCeilingLocation.Roofed(pawnMap)).ToList();
 
             if (ceilingLocations.Count > 0)
             {
@@ -40,22 +38,15 @@ namespace ColonistsDeco
 
             IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
 
-            int ceilingDecorationAmount = 0;
+            var ceilingDecorationAmount = thingsInRoom.Count(Utility.IsCeilingDeco);
 
-            foreach (Thing thingInRoom in thingsInRoom)
-            {
-                if (Utility.IsCeilingDeco(thingInRoom))
-                {
-                    ceilingDecorationAmount++;
-                }
-            }
-
-            if (pawn.CanReserveAndReach(ceilingLocation, PathEndMode.OnCell, Danger.None, 1, -1) && ceilingLocation == null || ceilingDecorationAmount >= ColonistsDecoMain.Settings.ceilingDecorationLimit)
+            if (pawn.CanReserveAndReach(ceilingLocation, PathEndMode.OnCell, Danger.None) && ceilingLocation == null 
+                || ceilingDecorationAmount >= ColonistsDecoMain.settings.ceilingDecorationLimit)
             {
                 return null;
             }
 
-            Job job = JobMaker.MakeJob(def.jobDef, ceilingLocation);
+            var job = JobMaker.MakeJob(def.jobDef, ceilingLocation);
             return job;
         }
     }

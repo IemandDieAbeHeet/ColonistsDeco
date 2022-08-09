@@ -16,12 +16,12 @@ namespace ColonistsDeco
 		{
 			get
 			{
-				float num = 300f;
+				float num = DialogHeight;
 				if (title != null)
 				{
-					num += 42f;
+					num += TitleHeight;
 				}
-				return new Vector2(500f, num);
+				return new Vector2(DialogWidth, num);
 			}
 		}
 

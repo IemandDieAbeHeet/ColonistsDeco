@@ -6,37 +6,43 @@ namespace ColonistsDeco.Buildings
 {
     class CeilingDeco_Default : Building
 	{
-		public string InspectStringAddon = "Decoration: ";
+		public string inspectStringAddon = "Decoration: ";
 
-		private Texture2D decoImage = null;
-		private Texture2D inspectIcon = null;
+		private Texture2D _decoImage;
+		private Texture2D _inspectIcon;
 
-		override public IEnumerable<Gizmo> GetGizmos()
+		public CeilingDeco_Default(string inspectStringAddon)
 		{
-			decoImage = (Texture2D)Graphic.ExtractInnerGraphicFor(this).MatSouth.mainTexture;
-			inspectIcon = ContentFinder<Texture2D>.Get("Icons/InspectIcon");
+			this.inspectStringAddon = inspectStringAddon;
+		}
 
-			if (inspectIcon == null || decoImage == null)
+		public override IEnumerable<Gizmo> GetGizmos()
+		{
+			_decoImage = (Texture2D)Graphic.ExtractInnerGraphicFor(this).MatSouth.mainTexture;
+			_inspectIcon = ContentFinder<Texture2D>.Get("Icons/InspectIcon");
+
+			if (_inspectIcon == null || _decoImage == null)
 			{
 				yield return null;
 			}
 
-			Command_Action item = new Command_Action
+			var item = new Command_Action
 			{
 				defaultLabel = "Inspect Decoration",
 				defaultDesc = "Take a closer look at the decoration that one of your colonists hung up",
-				icon = inspectIcon,
-				action = openInspectWindow
+				icon = _inspectIcon,
+				action = OpenInspectWindow
 			};
 
 			yield return item;
 		}
 
-		private void openInspectWindow()
+		private void OpenInspectWindow()
 		{
-			string decorationName = this.TryGetComp<CompDecoration>().decorationName;
-			string decorationCreator = this.TryGetComp<CompDecoration>().decorationCreator;
-			Find.WindowStack.Add(new Dialog_Inspect("\"" + decorationName + "\", " + "hung up by: " + decorationCreator, decoImage));
+			var decorationName = this.TryGetComp<CompDecoration>().decorationName;
+			var decorationCreator = this.TryGetComp<CompDecoration>().decorationCreator;
+			Find.WindowStack.Add(new Dialog_Inspect("\"" + decorationName + "\", " + "hung up by: " + decorationCreator,
+				_decoImage));
 		}
 	}
 }

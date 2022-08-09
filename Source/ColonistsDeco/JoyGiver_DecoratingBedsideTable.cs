@@ -10,8 +10,7 @@ namespace ColonistsDeco
     {
         public override Job TryGiveJob(Pawn pawn)
         {
-            Thing bedsideTable;
-            Map pawnMap = pawn.Map;
+            var pawnMap = pawn.Map;
 
             if (pawn.WorkTypeIsDisabled(WorkTypeDefOf.Construction) || pawn.IsPrisoner || pawn.ownership.OwnedBed == null)
             {
@@ -20,10 +19,10 @@ namespace ColonistsDeco
 
             IList<Thing> bedsideTables = pawn.ownership.OwnedBed.GetRoom().ContainedThings(DefDatabase<ThingDef>.GetNamed("EndTable")).ToList();
 
-            for(int i = bedsideTables.Count - 1; i >= 0; i--)
+            for(var i = bedsideTables.Count - 1; i >= 0; i--)
             {
-                IList <Thing> ThingList = bedsideTables[i].Position.GetThingList(pawnMap);
-                if (ThingList.Any(b => Utility.IsBedsideDeco(b)))
+                IList<Thing> thingList = bedsideTables[i].Position.GetThingList(pawnMap);
+                if (thingList.Any(Utility.IsBedsideDeco))
                 {
                     bedsideTables.RemoveAt(i);
                 }
@@ -34,7 +33,7 @@ namespace ColonistsDeco
                 return null;
             }
 
-            bedsideTable = bedsideTables.RandomElement();
+            var bedsideTable = bedsideTables.RandomElement();
 
             Thing emptyThing = new Thing();
             if (bedsideTable == null || bedsideTable.def == emptyThing.def)

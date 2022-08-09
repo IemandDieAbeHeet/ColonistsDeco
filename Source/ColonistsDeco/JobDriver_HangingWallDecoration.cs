@@ -7,14 +7,14 @@ namespace ColonistsDeco
 {
     public class JobDriver_HangingWallDecoration : JobDriver
     {
-        private float workLeft = 100f;
+        private float _workLeft = 100f;
 
-        protected const int BaseWorkAmount = 100;
-        protected LocalTargetInfo placeInfo => job.GetTarget(TargetIndex.A);
-        protected LocalTargetInfo wallInfo => job.GetTarget(TargetIndex.B);
+        private const int BaseWorkAmount = 100;
+        private LocalTargetInfo PlaceInfo => job.GetTarget(TargetIndex.A);
+        private LocalTargetInfo WallInfo => job.GetTarget(TargetIndex.B);
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return pawn.Reserve(placeInfo, job, 1, -1, null, errorOnFailed);
+            return pawn.Reserve(PlaceInfo, job, 1, -1, null, errorOnFailed);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
@@ -27,31 +27,27 @@ namespace ColonistsDeco
 
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
 
-            Toil hangPoster = new Toil();
-            hangPoster.handlingFacing = true;
-            hangPoster.initAction = delegate
+            Toil hangPoster = new Toil
             {
-                workLeft = 100f;
-            };
-            hangPoster.tickAction = delegate
-            {
-                pawn.rotationTracker.FaceCell(TargetB.Cell);
-                if (pawn.skills != null)
+                handlingFacing = true,
+                initAction = delegate
                 {
-                    pawn.skills.Learn(SkillDefOf.Construction, 0.085f);
-                }
-                float statValue = pawn.GetStatValueForPawn(StatDefOf.ConstructionSpeed, pawn);
-                workLeft -= statValue * 1.7f;
-                if (workLeft <= 0f)
+                    _workLeft = 100f;
+                },
+                tickAction = delegate
                 {
-                    List<ThingDef> wallDecos = Utility.GetDecoList(DecoLocationType.Wall);
-
+                    pawn.rotationTracker.FaceCell(TargetB.Cell);
+                    pawn.skills?.Learn(SkillDefOf.Construction, 0.085f);
+                    
+                    var statValue = pawn.GetStatValueForPawn(StatDefOf.ConstructionSpeed, pawn);
+                    _workLeft -= statValue * 1.7f;
+                    var wallDecos = Utility.GetDecoList(DecoLocationType.Wall);
+                    
+                    if (!(_workLeft <= 0f)) return;
                     IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
 
-                    ThingDef wallDeco;
-
-                    List<ThingDef> possibleWallDecos = new List<ThingDef>(wallDecos);
-                    foreach (Thing thingInRoom in thingsInRoom)
+                    var possibleWallDecos = new List<ThingDef>(wallDecos);
+                    foreach (var thingInRoom in thingsInRoom)
                     {
                         if (Utility.IsCeilingDeco(thingInRoom))
                         {
@@ -59,30 +55,23 @@ namespace ColonistsDeco
                         }
                     }
 
-                    if (possibleWallDecos.Count > 0)
-                    {
-                        wallDeco = possibleWallDecos.RandomElement();
-                    }
-                    else
-                    {
-                        wallDeco = wallDecos.RandomElement();
-                    }
+                    var wallDeco = possibleWallDecos.Count > 0 ? possibleWallDecos.RandomElement() : wallDecos.RandomElement();
 
-                    Thing thing = ThingMaker.MakeThing(wallDeco);
+                    var thing = ThingMaker.MakeThing(wallDeco);
 
                     thing.SetFactionDirect(pawn.Faction);
-                    CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
+                    var compDecoration = thing.TryGetComp<CompDecoration>();
                     if(compDecoration != null)
                     {
                         compDecoration.decorationCreator = pawn.Name.ToStringShort;
                     }
-                    wallInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
-                    GenSpawn.Spawn(thing, wallInfo.Cell, Map, pawn.Rotation.Opposite, WipeMode.Vanish, false);
+                    WallInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
+                    GenSpawn.Spawn(thing, WallInfo.Cell, Map, pawn.Rotation.Opposite);
                     ReadyForNextToil();
-                }
+                },
+                defaultCompleteMode = ToilCompleteMode.Never
             };
-            hangPoster.defaultCompleteMode = ToilCompleteMode.Never;
-            hangPoster.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
+            hangPoster.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - _workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
 
             yield return hangPoster;
         }
@@ -90,7 +79,7 @@ namespace ColonistsDeco
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref workLeft, "workLeft", 0f);
+            Scribe_Values.Look(ref _workLeft, "workLeft", 0f);
         }
     }
 }

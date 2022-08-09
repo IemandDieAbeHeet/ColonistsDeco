@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using RimWorld;
 using Verse;
 
 namespace ColonistsDeco
 {
-	class Utility
+	public static class Utility
 	{
-		public static ThingDef wallDef;
+		public static Dictionary<ThingDef, List<TechLevel>> thingTechProgression =
+			new Dictionary<ThingDef, List<TechLevel>>();
 
-		public static ThingDef tornDef;
-
-		public static Dictionary<ThingDef, List<TechLevel>> thingTechProgression = new Dictionary<ThingDef, List<TechLevel>>();
-
-		public static Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)> decoDictionary = new Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)>();
+		public static Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)> decoDictionary =
+			new Dictionary<ThingDef, (List<TechLevel>, DecoLocationType)>();
 
 		public static List<ThingDef> ceilingDecoDefs = new List<ThingDef>();
 
@@ -41,18 +41,15 @@ namespace ColonistsDeco
 				if (allDef.HasModExtension<DecoModExtension>())
 				{
 					thingTechProgression.Add(allDef, allDef.GetModExtension<DecoModExtension>().decoTechLevels);
-					decoDictionary.Add(allDef, (allDef.GetModExtension<DecoModExtension>().decoTechLevels, allDef.GetModExtension<DecoModExtension>().decoLocationType));
+					decoDictionary.Add(allDef,
+						(allDef.GetModExtension<DecoModExtension>().decoTechLevels,
+							allDef.GetModExtension<DecoModExtension>().decoLocationType));
 
 					switch (allDef.GetModExtension<DecoModExtension>().decoLocationType)
                     {
 						case DecoLocationType.Wall:
 							wallDecoDefs.Add(allDef);
 							wallDecoHashes.Add(allDef.GetHashCode());
-
-							if(allDef.defName == "DECOPosterTorn")
-                            {
-								tornDef = allDef;
-                            }
 							break;
 						case DecoLocationType.Bedside:
 							bedsideDecoDefs.Add(allDef);
@@ -62,18 +59,18 @@ namespace ColonistsDeco
 							ceilingDecoDefs.Add(allDef);
 							ceilingDecoHashes.Add(allDef.GetHashCode());
 							break;
+						default:
+							throw new ArgumentOutOfRangeException();
                     }
 				}
 
 				switch(allDef.defName)
                 {
 					case "Wall":
-						wallDef = allDef;
 						allDef.comps.Add(attachableThingComp);
 						wallHashes.Add(allDef.GetHashCode());
 						break;
 					case var val when new Regex("(Smoothed)+").IsMatch(val):
-						wallDef = allDef;
 						allDef.comps.Add(attachableThingComp);
 						wallHashes.Add(allDef.GetHashCode());
 						break;
@@ -83,12 +80,10 @@ namespace ColonistsDeco
 					case "Human":
 						allDef.comps.Add(pawnDecoThingComp);
 						break;
-					default:
-						break;
-				}
+                }
 			}
 
-			foreach(ResearchProjectDef researchDef in DefDatabase<ResearchProjectDef>.AllDefs)
+			foreach(var researchDef in DefDatabase<ResearchProjectDef>.AllDefs)
             {
 				if(researchDef.tab == DefDatabase<ResearchTabDef>.GetNamed("Decorations"))
                 {
@@ -98,119 +93,76 @@ namespace ColonistsDeco
 		}
 
 		public static bool IsCeilingDeco(Thing thing)
-        {
-			if (ceilingDecoHashes.Contains(thing.def.GetHashCode()))
-            {
-				return true;
-            }
-			return false;
+		{
+			return ceilingDecoHashes.Contains(thing.def.GetHashCode());
 		}
 
 		public static bool IsWallDeco(Thing thing)
 		{
-			if (wallDecoHashes.Contains(thing.def.GetHashCode()))
-			{
-				return true;
-			}
-			return false;
+			return wallDecoHashes.Contains(thing.def.GetHashCode());
 		}
 
 		public static bool IsBedsideDeco(Thing thing)
 		{
-			if (bedsideDecoHashes.Contains(thing.def.GetHashCode()))
-			{
-				return true;
-			}
-			return false;
+			return bedsideDecoHashes.Contains(thing.def.GetHashCode());
 		}
 
 		public static bool IsWall(Thing thing)
 		{
-			if (wallHashes.Any(h => h == thing.def.GetHashCode()))
-			{
-				return true;
-			}
-			return false;
+			return wallHashes.Any(h => h == thing.def.GetHashCode());
 		}
 
 		public static List<ThingDef> GetDecoList(DecoLocationType decoLocationType)
 		{
-			List<ThingDef> decoList = new List<ThingDef>();
-			List<ThingDef> locationDecoList = new List<ThingDef>();
-			TechLevel maxTechLevel = TechLevel.Neolithic;
+			var decoList = new List<ThingDef>();
+			var locationDecoList = new List<ThingDef>();
+			var maxTechLevel = TechLevel.Neolithic;
 
-			foreach (ResearchProjectDef researchProjectDef in researchProjectDefs)
+			foreach (var researchProjectDef in researchProjectDefs.Where(researchProjectDef => researchProjectDef.IsFinished))
 			{
-				if (researchProjectDef.IsFinished)
+				maxTechLevel = researchProjectDef.techLevel;
+			}
+
+			foreach (var deco in decoDictionary.Keys)
+			{
+				if (!decoDictionary.TryGetValue(deco, out var decoTuple)) continue;
+				if (decoTuple.Item1.Any(t => t == maxTechLevel) && decoTuple.Item2 == decoLocationType)
 				{
-					maxTechLevel = researchProjectDef.techLevel;
+					decoList.Add(deco);
+				}
+				else if (decoTuple.Item2 == decoLocationType)
+				{
+					locationDecoList.Add(deco);
 				}
 			}
 
-			foreach (ThingDef deco in decoDictionary.Keys)
-			{
-				(List<TechLevel>, DecoLocationType) decoTuple;
-				if (decoDictionary.TryGetValue(deco, out decoTuple))
-				{
-					if (decoTuple.Item1.Any(t => t == maxTechLevel) && decoTuple.Item2 == decoLocationType)
-					{
-						decoList.Add(deco);
-					}
-					else if (decoTuple.Item2 == decoLocationType)
-					{
-						locationDecoList.Add(deco);
-					}
-				}
-			}
-
-			if (decoList.Count > 0)
-			{
-				return decoList;
-			}
-			else
-			{
-				return locationDecoList;
-			}
+			return decoList.Count > 0 ? decoList : locationDecoList;
 		}
 		
 		public static bool ResearchLevelHasDecos(ResearchProjectDef researchLevel, DecoLocationType decoLocationType)
         {
-			int count = 0;
+			var count = 0;
 
-			foreach(ThingDef deco in decoDictionary.Keys)
-            {
-				(List<TechLevel>, DecoLocationType) decoTuple;
-				if (decoDictionary.TryGetValue(deco, out decoTuple))
+			foreach(var deco in decoDictionary.Keys)
+			{
+				if (!decoDictionary.TryGetValue(deco, out var decoTuple)) continue;
+				if (decoTuple.Item1.Any(t => t == researchLevel.techLevel) && decoTuple.Item2 == decoLocationType)
 				{
-					if (decoTuple.Item1.Any(t => t == researchLevel.techLevel) && decoTuple.Item2 == decoLocationType)
-					{
-						count++;
-					}
+					count++;
 				}
 			}
 
-			if(count > 0)
-            {
-				return true;
-            } else
-            {
-				return false;
-            }
+			return count > 0;
         }
 
 		public static ResearchProjectDef GetHighestResearchedLevel()
         {
-			List<ResearchProjectDef> rds = new List<ResearchProjectDef>();
-			ResearchProjectDef rd = new ResearchProjectDef();
+	        var rd = new ResearchProjectDef();
 
-			rds = researchProjectDefs;
-			foreach(ResearchProjectDef researchProjectDef in researchProjectDefs)
-            {
-				if (researchProjectDef.IsFinished)
-				{
-					rd = researchProjectDef;
-				}
-            }
+			foreach (var researchProjectDef in researchProjectDefs.Where(researchProjectDef => researchProjectDef.IsFinished))
+			{
+				rd = researchProjectDef;
+			}
 
 			return rd;
 		}

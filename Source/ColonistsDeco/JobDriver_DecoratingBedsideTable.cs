@@ -7,13 +7,13 @@ namespace ColonistsDeco
 {
     public class JobDriver_DecoratingBedsideTable : JobDriver
     {
-        private float workLeft = 100f;
+        private float _workLeft = 100f;
 
-        protected const int BaseWorkAmount = 100;
-        protected LocalTargetInfo bedsideInfo => job.GetTarget(TargetIndex.A);
+        private const int BaseWorkAmount = 100;
+        private LocalTargetInfo BedsideInfo => job.GetTarget(TargetIndex.A);
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return pawn.Reserve(bedsideInfo, job);
+            return pawn.Reserve(BedsideInfo, job);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
@@ -25,32 +25,29 @@ namespace ColonistsDeco
 
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.Touch);
 
-            Toil decorateBedside = new Toil();
-            decorateBedside.handlingFacing = true;
-            decorateBedside.initAction = delegate
+            var decorateBedside = new Toil
             {
-                workLeft = 100f;
-            };
-            decorateBedside.tickAction = delegate
-            {
-                pawn.rotationTracker.FaceCell(TargetA.Cell);
-                if (pawn.skills != null)
+                handlingFacing = true,
+                initAction = delegate
                 {
-                    pawn.skills.Learn(SkillDefOf.Construction, 0.085f);
-                }
-                float statValue = pawn.GetStatValueForPawn(StatDefOf.ConstructionSpeed, pawn);
-                workLeft -= statValue * 1.7f;
-                if (workLeft <= 0f)
+                    _workLeft = 100f;
+                },
+                tickAction = delegate
                 {
-                    Thing thing = ThingMaker.MakeThing(Utility.bedsideDecoDefs.RandomElement());
+                    pawn.rotationTracker.FaceCell(TargetA.Cell);
+                    pawn.skills?.Learn(SkillDefOf.Construction, 0.085f);
+                    var statValue = pawn.GetStatValueForPawn(StatDefOf.ConstructionSpeed, pawn);
+                    _workLeft -= statValue * 1.7f;
+                    if (!(_workLeft <= 0f)) return;
+                    var thing = ThingMaker.MakeThing(Utility.bedsideDecoDefs.RandomElement());
                     thing.SetFactionDirect(pawn.Faction);
-                    bedsideInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
-                    GenSpawn.Spawn(thing, bedsideInfo.Cell, Map, bedsideInfo.Thing.Rotation, WipeMode.Vanish, false);
+                    BedsideInfo.Thing.TryGetComp<CompAttachableThing>().AddAttachment(thing);
+                    GenSpawn.Spawn(thing, BedsideInfo.Cell, Map, BedsideInfo.Thing.Rotation, WipeMode.Vanish, false);
                     ReadyForNextToil();
-                }
+                },
+                defaultCompleteMode = ToilCompleteMode.Never
             };
-            decorateBedside.defaultCompleteMode = ToilCompleteMode.Never;
-            decorateBedside.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
+            decorateBedside.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - _workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
 
             yield return decorateBedside;
         }
@@ -58,7 +55,7 @@ namespace ColonistsDeco
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref workLeft, "workLeft", 0f);
+            Scribe_Values.Look(ref _workLeft, "workLeft", 0f);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace ColonistsDeco
@@ -10,15 +11,13 @@ namespace ColonistsDeco
         public override void CompTick()
         {
             base.CompTick();
-			{
-				if (attachedThings != null)
-				{
-					for (int i = 0; i < attachedThings.Count; i++)
-					{
-						attachedThings[i].Position = parent.Position;
-					}
-				}
-			}
+            {
+	            if (attachedThings == null) return;
+	            foreach (var t in attachedThings)
+	            {
+		            t.Position = parent.Position;
+	            }
+            }
 		}
 
         public override void PostDeSpawn(Map map)
@@ -28,12 +27,9 @@ namespace ColonistsDeco
 			{
 				return;
 			}
-			foreach (Thing attachedThing in attachedThings)
+			foreach (var attachedThing in attachedThings.Where(attachedThing => attachedThing.Spawned))
 			{
-				if (attachedThing.Spawned)
-				{
-					attachedThing.Destroy(DestroyMode.Deconstruct);
-				}
+				attachedThing.Destroy(DestroyMode.Deconstruct);
 			}
 			attachedThings.Clear();
 		}

@@ -4,7 +4,7 @@ using Verse;
 
 namespace ColonistsDeco
 {
-    enum DecoLocationType
+    public enum DecoLocationType
     {
         Wall,
         Ceiling,
@@ -13,7 +13,7 @@ namespace ColonistsDeco
 
     class DecoModExtension : DefModExtension
     {
-        public List<TechLevel> decoTechLevels = new List<TechLevel>();
+        public readonly List<TechLevel> decoTechLevels = new List<TechLevel>();
         public DecoLocationType decoLocationType;
     }
 }

@@ -7,13 +7,13 @@ namespace ColonistsDeco
 {
     class JobDriver_HangingCeilingDecoration : JobDriver
     {
-        private float workLeft = 100f;
+        private float _workLeft = 100f;
 
-        protected const int BaseWorkAmount = 100;
-        protected LocalTargetInfo placeInfo => job.GetTarget(TargetIndex.A);
+        private const int BaseWorkAmount = 100;
+        private LocalTargetInfo PlaceInfo => job.GetTarget(TargetIndex.A);
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return pawn.Reserve(placeInfo, job, 1, -1, null, errorOnFailed);
+            return pawn.Reserve(PlaceInfo, job, 1, -1, null, errorOnFailed);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
@@ -22,32 +22,25 @@ namespace ColonistsDeco
 
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
 
-            Toil hangCeilingDeco = new Toil();
-
-            hangCeilingDeco.handlingFacing = true;
-            hangCeilingDeco.initAction = delegate
+            var hangCeilingDeco = new Toil
             {
-                workLeft = 100f;
-            };
-            hangCeilingDeco.tickAction = delegate
-            {
-                if (pawn.skills != null)
+                handlingFacing = true,
+                initAction = delegate
                 {
-                    pawn.skills.Learn(SkillDefOf.Construction, 0.085f);
-                }
-                float statValue = pawn.GetStatValueForPawn(StatDefOf.ConstructionSpeed, pawn);
-                workLeft -= statValue * 1.7f;
-                if (workLeft <= 0f)
+                    _workLeft = 100f;
+                },
+                tickAction = delegate
                 {
-                    Thing thing = new Thing();
-                    List<ThingDef> ceilingDecos = Utility.GetDecoList(DecoLocationType.Ceiling);
+                    pawn.skills?.Learn(SkillDefOf.Construction, 0.085f);
+                    var statValue = pawn.GetStatValueForPawn(StatDefOf.ConstructionSpeed, pawn);
+                    _workLeft -= statValue * 1.7f;
+                    if (!(_workLeft <= 0f)) return;
+                    var ceilingDecos = Utility.GetDecoList(DecoLocationType.Ceiling);
 
                     IList<Thing> thingsInRoom = pawn.ownership.OwnedBed.GetRoom().ContainedAndAdjacentThings;
 
-                    ThingDef ceilingDeco;
-
-                    List<ThingDef> possibleCeilingDecos = new List<ThingDef>(ceilingDecos);
-                    foreach (Thing thingInRoom in thingsInRoom)
+                    var possibleCeilingDecos = new List<ThingDef>(ceilingDecos);
+                    foreach (var thingInRoom in thingsInRoom)
                     {
                         if(Utility.IsCeilingDeco(thingInRoom))
                         {
@@ -55,27 +48,23 @@ namespace ColonistsDeco
                         }
                     }
 
-                    if (possibleCeilingDecos.Count > 0)
-                    {
-                        ceilingDeco = possibleCeilingDecos.RandomElement();
-                    } else
-                    {
-                        ceilingDeco = ceilingDecos.RandomElement();
-                    }
+                    var ceilingDeco = possibleCeilingDecos.Count >
+                                      0 ? possibleCeilingDecos.RandomElement() : ceilingDecos.RandomElement();
 
-                    thing = ThingMaker.MakeThing(ceilingDeco);
+                    var thing = ThingMaker.MakeThing(ceilingDeco);
                     thing.SetFactionDirect(pawn.Faction);
-                    CompDecoration compDecoration = thing.TryGetComp<CompDecoration>();
+                    var compDecoration = thing.TryGetComp<CompDecoration>();
                     if (compDecoration != null)
                     {
                         compDecoration.decorationCreator = pawn.Name.ToStringShort;
                     }
-                    GenSpawn.Spawn(thing, placeInfo.Cell, Map, Rot4.North, WipeMode.Vanish, false);
+                    GenSpawn.Spawn(thing, PlaceInfo.Cell, Map, Rot4.North, WipeMode.Vanish, false);
                     ReadyForNextToil();
-                }
+                },
+                defaultCompleteMode = ToilCompleteMode.Never
             };
-            hangCeilingDeco.defaultCompleteMode = ToilCompleteMode.Never;
-            hangCeilingDeco.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
+
+            hangCeilingDeco.WithProgressBar(TargetIndex.A, () => (BaseWorkAmount - _workLeft) / BaseWorkAmount, interpolateBetweenActorAndTarget: true);
 
             yield return hangCeilingDeco;
         }
@@ -83,7 +72,7 @@ namespace ColonistsDeco
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref workLeft, "workLeft", 0f);
+            Scribe_Values.Look(ref _workLeft, "workLeft");
         }
     }
 }

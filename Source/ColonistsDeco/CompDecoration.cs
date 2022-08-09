@@ -10,9 +10,9 @@ namespace ColonistsDeco
 
         public string decorationCreator;
 
-        public override void Initialize(CompProperties props)
+        public override void Initialize(CompProperties compProps)
         {
-            base.Initialize(props);
+            base.Initialize(compProps);
 
             decorationName = Props.decorationName;
             decorationCreator = "Unknown";

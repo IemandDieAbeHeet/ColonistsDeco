@@ -9,7 +9,7 @@ namespace ColonistsDeco.Settings
 		public static void Slider(this Listing_Standard list, ref int value, float min, float max, Func<string> label, float roundTo = -1f)
 		{
 			float value2 = value;
-			float gapHeight = HorizontalSlider(list.GetRect(22f), ref value2, min, max, label?.Invoke(), roundTo);
+			var gapHeight = HorizontalSlider(list.GetRect(22f), ref value2, min, max, label?.Invoke(), roundTo);
 			value = (int)value2;
 			list.Gap(gapHeight);
 		}
@@ -18,8 +18,8 @@ namespace ColonistsDeco.Settings
 		{
 			if (label != null)
 			{
-				TextAnchor anchor = Text.Anchor;
-				GameFont font = Text.Font;
+				var anchor = Text.Anchor;
+				var font = Text.Font;
 				Text.Font = GameFont.Tiny;
 				Text.Anchor = TextAnchor.UpperLeft;
 				Widgets.Label(rect, label);
@@ -30,12 +30,9 @@ namespace ColonistsDeco.Settings
 			value = GUI.HorizontalSlider(rect, value, leftValue, rightValue);
 			if (roundTo > 0f)
 			{
-				value = (float)Mathf.RoundToInt(value / roundTo) * roundTo;
+				value = Mathf.RoundToInt(value / roundTo) * roundTo;
 			}
-			if (4f + label == null)
-			{
-				return 0f;
-			}
+
 			return 3f;
 		}
 	}

@@ -9,17 +9,17 @@ namespace ColonistsDeco
     [StaticConstructorOnStartup]
     public static class HarmonyPatches
     {
-        private static readonly Type patchType = typeof(HarmonyPatches);
+        private static readonly Type PatchType = typeof(HarmonyPatches);
         
         static HarmonyPatches()
         {
             Harmony harmony = new Harmony(id: "rimworld.iemanddieabeheet.colonistsdeco");
 
             harmony.Patch(AccessTools.Method(typeof(BeautyUtility), nameof(BeautyUtility.CellBeauty)),
-                postfix: new HarmonyMethod(patchType, nameof(CellBeautyPostfix)));
+                postfix: new HarmonyMethod(PatchType, nameof(CellBeautyPostfix)));
         }
 
-        public static void CellBeautyPostfix(ref float __result, IntVec3 c, Map map)
+        public static void CellBeautyPostfix(ref float result, IntVec3 c, Map map)
         {
             List<IntVec3> cells = GenAdjFast.AdjacentCellsCardinal(c);
             foreach (IntVec3 cell in cells)
@@ -28,7 +28,7 @@ namespace ColonistsDeco
                 {
                     if(Utility.wallDecoDefs.Contains(thing.def) && (thing.Position + thing.Rotation.FacingCell) == c)
                     {
-                        __result += thing.GetStatValue(StatDefOf.Beauty);
+                        result += thing.GetStatValue(StatDefOf.Beauty);
                     }
                 }
             }

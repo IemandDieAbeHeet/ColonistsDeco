@@ -6,17 +6,17 @@ namespace ColonistsDeco
 {
 	internal class ColonistsDecoMain : Mod
 	{
-		public static ColonistsDecoModSettings Settings;
+		public static ColonistsDecoModSettings settings;
 
 		public ColonistsDecoMain(ModContentPack content)
 			: base(content)
 		{
-			Settings = GetSettings<ColonistsDecoModSettings>();
+			settings = GetSettings<ColonistsDecoModSettings>();
 		}
 
 		public override void DoSettingsWindowContents(Rect inRect)
 		{
-			Settings.DoWindowContents(inRect);
+			settings.DoWindowContents(inRect);
 		}
 
 		public override string SettingsCategory()
